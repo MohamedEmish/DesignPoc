@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="heading_xl">عنوان رئيسى كبير جدا - نصف ثقيل ٤٠\٤٨</string>
+    <string name="heading_l">عنوان رئيسى كبير - نصف ثقيل ٢٨\٤٠</string>
+    <string name="heading_m">عنوان رئيسى متوسط - عادى ٢٠\٢٨</string>
+    <string name="heading_s">عنوان رئيسى صغير - عادى ١٦\٢٤</string>
+    <string name="title_l">عنوان كبير - نصف ثقيل ١٨\٣٢</string>
+    <string name="title_m">عنوان متوسط - نصف ثقيل ١٦\٢٤</string>
+    <string name="title_s">عنوان صغير - نصف ثقيل ١٤\٢٠</string>
+    <string name="label_l">عنوان فرعى كبير - متوسط ١٦\٢٤</string>
+    <string name="label_m">عنوان فرعى متوسط - متوسط ١٤\٢٠</string>
+    <string name="label_s">عنوان فرعى صغير - متوسط ١٢\١٦</string>
+    <string name="label_x_s">عنوان فرعى بالغ الصغر - متوسط ١٠\١٢</string>
+    <string name="body_l">نص كبير - عادى ١٦\٢٤</string>
+    <string name="body_m">نص متوس\ - عادى ١٤\٢٠</string>
+    <string name="body_s">نص صغير - عادى ١٢\١٦</string>
+    <string name="english">انجليزى</string>
+    <string name="arabic">عربى</string>
+
+    <string name="design_system">قواعد التصميم</string>
+    <string name="test_case">اختبار</string>
+    <string name="remaining_amount">المبلغ المتبقى</string>
+    <string name="rest_installments">باقى الاقساط</string>
+    <string name="k_egp">٥٠٠ ج.م</string>
+    <string name="total_selected">المجموع</string>
+    <string name="next">التالى</string>
+    <string name="select_order_you_want_to_settle">اختر الطلب الذى تود تسوية اقساطه</string>
+    <string name="buttons">الازرار</string>
+    <string name="button">الزر</string>
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/black</color>
+    <color name="colorAccent">@color/lime</color>
+
+    <!-- Primary   -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="card_shadow_5">#0D797984</color>
+    <color name="card_shadow_10">#1A797984</color>
+
+    <!-- Natural   -->
+    <color name="platinum_900">#232327</color>
+    <color name="platinum_800">#47474F</color>
+    <color name="platinum_700">#6A6A76</color>
+    <color name="platinum_600">#797984</color>
+    <color name="platinum_500">#888891</color>
+    <color name="platinum_450">#97979F</color>
+    <color name="platinum_400">#A6A6AD</color>
+    <color name="platinum_350">#B4B4BA</color>
+    <color name="platinum_300">#C3C3C8</color>
+    <color name="platinum_250">#D2D2D6</color>
+    <color name="platinum_200">#E1E1E4</color>
+    <color name="platinum_150">#F0F0F1</color>
+    <color name="platinum_100">#F9F9FA</color>
+    <color name="platinum_50">#FBFBFC</color>
+
+    <!-- Semantic   -->
+    <color name="success_600">#7FD800</color>
+    <color name="success_50">#F9FDF2</color>
+
+    <color name="error_600">#FF4800</color>
+    <color name="error_50">#FFF6F2</color>
+
+    <color name="warning_600">#FFBC00</color>
+    <color name="warning_50">#FFFCF2</color>
+
+    <color name="information_600">#4E38BA</color>
+    <color name="information_50">#F6F5FC</color>
+
+    <!-- Brand   -->
+    <color name="lime">#7FD800</color>
+    <color name="grass">#00513E</color>
+    <color name="mango">#FFBC00</color>
+    <color name="ferrari">#FF4800</color>
+    <color name="candy">#FF85CB</color>
+    <color name="blueBerry">#4E38BA</color>
+    <color name="sky">#57E7FF</color>
+</resources>

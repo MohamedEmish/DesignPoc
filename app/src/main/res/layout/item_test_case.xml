@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/spacing_normal_16"
+    android:layout_marginVertical="@dimen/spacing_small_8"
+    android:outlineSpotShadowColor="@color/card_shadow_5"
+    app:cardCornerRadius="@dimen/spacing_special_12"
+    app:cardElevation="15dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_normal_16"
+        >
+
+        <RadioButton
+            android:id="@+id/rbCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderNumber"
+            style="@style/ShahryTitleMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="#37979/47752"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toStartOf="@id/gl_v_50"
+            app:layout_constraintStart_toEndOf="@id/rbCheck"
+            app:layout_constraintTop_toTopOf="@id/rbCheck"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvProduct"
+            style="@style/ShahryBodySmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="AirPods Pro 3"
+            android:textAlignment="viewStart"
+            android:textColor="#1F1F1F"
+            app:layout_constraintEnd_toStartOf="@id/gl_v_50"
+            app:layout_constraintStart_toStartOf="@id/tvOrderNumber"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderNumber"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCost"
+            style="@style/ShahryHeadingSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small_8"
+            android:text="@string/k_egp"
+            android:textAlignment="viewEnd"
+            android:textColor="#00BC9D"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_v_50"
+            app:layout_constraintTop_toTopOf="@id/tvOrderNumber"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/ShahryBodySmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small_8"
+            android:text="@string/remaining_amount"
+            android:textAlignment="viewEnd"
+            android:textColor="#99A8A5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_v_50"
+            app:layout_constraintTop_toBottomOf="@id/tvCost"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAmazon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/tvOrderNumber"
+            app:layout_constraintTop_toBottomOf="@id/tvProduct"
+            app:srcCompat="@drawable/ic_amazon"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/ShahryBodySmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rest_installments"
+            android:textAlignment="viewStart"
+            android:textColor="#1f1f1f"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/ivAmazon"
+            app:layout_constraintTop_toBottomOf="@id/ivAmazon"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="fontFamily">@font/font_vazirmatn</item>
+    </style>
+    
+    <!-- Typography   -->
+    <style name="ShahryTextStyleAlerter">
+        <item name="android:fontFamily">@font/font_vazirmatn_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+                    <!-- Heading   -->
+    <style name="ShahryHeadingXLarge">
+        <item name="fontFamily">@font/font_vazirmatn_semi_bold</item>
+        <item name="android:textSize">@dimen/font_heading_x_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryHeadingLarge">
+        <item name="fontFamily">@font/font_vazirmatn_semi_bold</item>
+        <item name="android:textSize">@dimen/font_heading_large</item>
+        <item name="lineSpacing">@dimen/spacing_special_12</item>
+    </style>
+
+    <style name="ShahryHeadingMedium">
+        <item name="fontFamily">@font/font_vazirmatn_regular</item>
+        <item name="android:textSize">@dimen/font_heading_medium</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryHeadingSmall">
+        <item name="fontFamily">@font/font_vazirmatn_regular</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+                    <!-- Title   -->
+    <style name="ShahryTitleLarge">
+        <item name="fontFamily">@font/font_vazirmatn_semi_bold</item>
+        <item name="android:textSize">@dimen/font_x_large</item>
+        <item name="lineSpacing">@dimen/spacing_special_14</item>
+    </style>
+
+    <style name="ShahryTitleMedium">
+        <item name="fontFamily">@font/font_vazirmatn_semi_bold</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryTitleSmall">
+        <item name="fontFamily">@font/font_vazirmatn_semi_bold</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+        <item name="lineSpacing">@dimen/spacing_special_6</item>
+    </style>
+
+                    <!-- Label   -->
+    <style name="ShahryLabelLarge">
+        <item name="fontFamily">@font/font_vazirmatn_medium</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryLabelMedium">
+        <item name="fontFamily">@font/font_vazirmatn_medium</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+        <item name="lineSpacing">@dimen/spacing_special_6</item>
+    </style>
+
+    <style name="ShahryLabelSmall">
+        <item name="fontFamily">@font/font_vazirmatn_medium</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="lineSpacing">@dimen/spacing_x_small_4</item>
+    </style>
+
+    <style name="ShahryLabelXSmall">
+        <item name="fontFamily">@font/font_vazirmatn_medium</item>
+        <item name="android:textSize">@dimen/font_x_small</item>
+        <item name="lineSpacing">@dimen/spacing_special_2</item>
+    </style>
+
+                    <!-- Body   -->
+    <style name="ShahryBodyLarge">
+        <item name="fontFamily">@font/font_vazirmatn_regular</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryBodyMedium">
+        <item name="fontFamily">@font/font_vazirmatn_regular</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+        <item name="lineSpacing">@dimen/spacing_special_6</item>
+    </style>
+
+    <style name="ShahryBodySmall">
+        <item name="fontFamily">@font/font_vazirmatn_regular</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="lineSpacing">@dimen/spacing_x_small_4</item>
+    </style>
+
+</resources>

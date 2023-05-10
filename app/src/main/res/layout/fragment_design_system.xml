@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:actionBarItemBackground"
+        android:padding="@dimen/spacing_normal_16"
+        app:srcCompat="@drawable/ic_back"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:fillViewport="true"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryHeadingXLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heading_xl"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryHeadingLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heading_l"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryHeadingMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heading_m"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryHeadingSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heading_s"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryTitleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_l"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryTitleMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_m"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryTitleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_s"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryLabelLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_l"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryLabelMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_m"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryLabelSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_s"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryLabelXSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_x_s"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryBodyLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/body_l"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryBodyMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/body_m"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/ShahryBodySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/body_s"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_x_small_4"
+                android:background="@color/lime"
+                android:text="Spacing X Small"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_small_8"
+                android:background="@color/grass"
+                android:text="Spacing Small"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_normal_16"
+                android:background="@color/mango"
+                android:text="Spacing Normal"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_large_24"
+                android:background="@color/ferrari"
+                android:text="Spacing Large"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="@dimen/spacing_normal_16"
+                android:orientation="horizontal"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="@dimen/spacing_x_small_4"
+                    android:layout_height="match_parent"
+                    android:background="@color/lime"
+                    android:text="Spacing X Small"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="@dimen/spacing_small_8"
+                    android:layout_height="match_parent"
+                    android:background="@color/grass"
+                    android:text="Spacing Small"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="@dimen/spacing_normal_16"
+                    android:layout_height="match_parent"
+                    android:background="@color/mango"
+                    android:text="Spacing Normal"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="@dimen/spacing_large_24"
+                    android:layout_height="match_parent"
+                    android:background="@color/ferrari"
+                    android:text="Spacing Large"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="fontFamily">@font/font_inter</item>
+    </style>
+
+    <!-- set the rounded drawable as background to your bottom sheet -->
+    <style name="ShahryBottomSheetModal" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+    </style>
+
+    <style name="ShahryBottomSheetDialogFragmentTheme" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/ShahryBottomSheetModal</item>
+        <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- Typography   -->
+    <style name="ShahryTextStyleAlerter">
+        <item name="android:fontFamily">@font/font_inter_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+                        <!-- Heading   -->
+    <style name="ShahryHeadingXLarge">
+        <item name="fontFamily">@font/font_inter_semi_bold</item>
+        <item name="android:textSize">@dimen/font_heading_x_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryHeadingLarge">
+        <item name="fontFamily">@font/font_inter_semi_bold</item>
+        <item name="android:textSize">@dimen/font_heading_large</item>
+        <item name="lineSpacing">@dimen/spacing_special_12</item>
+    </style>
+
+    <style name="ShahryHeadingMedium">
+        <item name="fontFamily">@font/font_inter_regular</item>
+        <item name="android:textSize">@dimen/font_heading_medium</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryHeadingSmall">
+        <item name="fontFamily">@font/font_inter_regular</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+                        <!-- Title   -->
+    <style name="ShahryTitleLarge">
+        <item name="fontFamily">@font/font_inter_semi_bold</item>
+        <item name="android:textSize">@dimen/font_x_large</item>
+        <item name="lineSpacing">@dimen/spacing_special_14</item>
+    </style>
+
+    <style name="ShahryTitleMedium">
+        <item name="fontFamily">@font/font_inter_semi_bold</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryTitleSmall">
+        <item name="fontFamily">@font/font_inter_semi_bold</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+        <item name="lineSpacing">@dimen/spacing_special_6</item>
+    </style>
+
+                        <!-- Label   -->
+    <style name="ShahryLabelLarge">
+        <item name="fontFamily">@font/font_inter_medium</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryLabelMedium">
+        <item name="fontFamily">@font/font_inter_medium</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+        <item name="lineSpacing">@dimen/spacing_special_6</item>
+    </style>
+
+    <style name="ShahryLabelSmall">
+        <item name="fontFamily">@font/font_inter_medium</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="lineSpacing">@dimen/spacing_x_small_4</item>
+    </style>
+
+    <style name="ShahryLabelXSmall">
+        <item name="fontFamily">@font/font_inter_medium</item>
+        <item name="android:textSize">@dimen/font_x_small</item>
+        <item name="lineSpacing">@dimen/spacing_special_2</item>
+    </style>
+
+                        <!-- Body   -->
+    <style name="ShahryBodyLarge">
+        <item name="fontFamily">@font/font_inter_regular</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="lineSpacing">@dimen/spacing_small_8</item>
+    </style>
+
+    <style name="ShahryBodyMedium">
+        <item name="fontFamily">@font/font_inter_regular</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+        <item name="lineSpacing">@dimen/spacing_special_6</item>
+    </style>
+
+    <style name="ShahryBodySmall">
+        <item name="fontFamily">@font/font_inter_regular</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="lineSpacing">@dimen/spacing_x_small_4</item>
+    </style>
+
+
+    <style name="Poc.ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/spacing_normal_16</item>
+        <item name="cornerRadius">@dimen/spacing_x_small_4</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAppearance">@style/ShahryTitleLarge</item>
+    </style>
+
+</resources>
