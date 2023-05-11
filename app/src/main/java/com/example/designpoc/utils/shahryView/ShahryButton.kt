@@ -14,7 +14,8 @@ import com.example.designpoc.utils.extensions.dpToPx
 import com.example.designpoc.utils.extensions.getColorResource
 import com.example.designpoc.utils.extensions.getDrawableResource
 import com.example.designpoc.utils.extensions.setSafeOnClickListener
-import com.example.designpoc.utils.shahryView.ShahryButton.ButtonType.*
+import com.example.designpoc.utils.shahryView.ShahryButton.ButtonType.PRIMARY_LARGE
+import com.example.designpoc.utils.shahryView.ShahryButton.ButtonType.PRIMARY_X_SMALL
 import com.example.designpoc.utils.shahryView.ShahryButton.State
 import com.example.designpoc.utils.shahryView.ShahryButton.State.Initial
 import com.example.designpoc.utils.shahryView.ShahryButton.State.Loading
@@ -146,7 +147,7 @@ class ShahryButton(
             setSafeOnClickListener {
                 callbacks.onClicked()
             }
-            isClickable = enabled
+            isEnabled = enabled
 
             /** Text style **/
             text = buttonText
@@ -198,7 +199,7 @@ class ShahryButton(
     }
 
     private fun ShahryButtonWidgetBinding.renderLoading(isLoading: Boolean) {
-        isClickable = !isLoading
+        isEnabled = !isLoading
         materialButton.apply {
             icon = when {
                 isLoading -> materialButton.showProgress(

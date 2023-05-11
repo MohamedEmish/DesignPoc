@@ -118,7 +118,7 @@
             app:buttonColor="@color/white"
             app:buttonDisabledColor="@color/white"
             app:buttonStrokeColor="@color/black"
-            app:buttonStrokeDisabledColor="@color/platinum_100"
+            app:buttonStrokeDisabledColor="@color/platinum_400"
             app:buttonType="secondaryLargeButton"
             app:progressColor="@color/black"
             app:rippleColor="@color/platinum_100"
