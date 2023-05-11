@@ -2,6 +2,7 @@ package com.example.designpoc.utils.shahryView
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.drawable.RippleDrawable
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import android.util.AttributeSet
@@ -19,6 +20,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.CircularProgressIndicatorSpec
 import com.google.android.material.progressindicator.IndeterminateDrawable
 import com.example.designpoc.utils.shahryView.ShahryButton.ButtonType.PRIMARY_LARGE
+import com.example.designpoc.utils.shahryView.ShahryButton.ButtonType.PRIMARY_X_SMALL
 import com.example.designpoc.utils.shahryView.ShahryButton.State
 import com.example.designpoc.utils.shahryView.ShahryButton.State.Initial
 import com.example.designpoc.utils.shahryView.ShahryButton.State.Loading
@@ -53,6 +55,7 @@ class ShahryButton(
     private var buttonTextDisabledColor = context.getColorResource(R.color.platinum_400)
 
     private var progressColor = context.getColorResource(R.color.white)
+    private var rippleColor = context.getColorResource(R.color.platinum_400)
 
     private var iconResource = 0
 
@@ -66,29 +69,29 @@ class ShahryButton(
             buttonColor = attributes.getColor(
                 R.styleable.ShahryButton_buttonColor,
                 when {
-                    buttonType.isPrimary -> R.color.black
-                    else -> R.color.white
+                    buttonType.isPrimary -> context.getColorResource(R.color.black)
+                    else -> context.getColorResource(R.color.white)
                 }
             )
             buttonDisabledColor = attributes.getColor(
                 R.styleable.ShahryButton_buttonDisabledColor,
                 when {
-                    buttonType.isPrimary -> R.color.platinum_400
-                    else -> R.color.white
+                    buttonType.isPrimary -> context.getColorResource(R.color.platinum_400)
+                    else -> context.getColorResource(R.color.white)
                 }
             )
             buttonStrokeColor = attributes.getColor(
                 R.styleable.ShahryButton_buttonStrokeColor,
                 when {
-                    buttonType.isSecondary -> R.color.black
-                    else -> R.color.white
+                    buttonType.isSecondary -> context.getColorResource(R.color.black)
+                    else -> context.getColorResource(R.color.white)
                 }
             )
             buttonStrokeDisabledColor = attributes.getColor(
                 R.styleable.ShahryButton_buttonStrokeDisabledColor,
                 when {
-                    buttonType.isSecondary -> R.color.platinum_400
-                    else -> R.color.white
+                    buttonType.isSecondary -> context.getColorResource(R.color.platinum_400)
+                    else -> context.getColorResource(R.color.white)
                 }
             )
 
@@ -96,15 +99,15 @@ class ShahryButton(
             buttonTextColor = attributes.getColor(
                 R.styleable.ShahryButton_textColor,
                 when {
-                    buttonType.isPrimary -> R.color.white
-                    else -> R.color.black
+                    buttonType.isPrimary -> context.getColorResource(R.color.white)
+                    else -> context.getColorResource(R.color.black)
                 }
             )
             buttonTextDisabledColor = attributes.getColor(
                 R.styleable.ShahryButton_textDisabledColor,
                 when {
-                    buttonType.isPrimary -> R.color.white
-                    else -> R.color.platinum_400
+                    buttonType.isPrimary -> context.getColorResource(R.color.white)
+                    else -> context.getColorResource(R.color.platinum_400)
                 }
             )
 
@@ -112,9 +115,14 @@ class ShahryButton(
             progressColor = attributes.getColor(
                 R.styleable.ShahryButton_progressColor,
                 when {
-                    buttonType.isPrimary -> R.color.white
-                    else -> R.color.black
+                    buttonType.isPrimary -> context.getColorResource(R.color.white)
+                    else -> context.getColorResource(R.color.black)
                 }
+            )
+
+            rippleColor = attributes.getColor(
+                R.styleable.ShahryButton_rippleColor,
+                context.getColorResource(R.color.platinum_400)
             )
 
             // Icon attributes
@@ -164,10 +172,10 @@ class ShahryButton(
                     else -> context.getColorResource(R.color.white)
                 }
             )
-            rippleColor = if (enabled) ColorStateList.valueOf(context.getColorResource(R.color.platinum_400)) else null
+            rippleColor = if (enabled) ColorStateList.valueOf(context.getColorResource(R.color.platinum_400)) else null // todo :: fix ripple to be dynamic
 
             if (buttonType.isSecondary) {
-                strokeColor = ColorStateList.valueOf(
+                strokeColor = ColorStateList.valueOf( // todo "" stroke
                     if (enabled) buttonStrokeColor else buttonStrokeDisabledColor
                 )
                 strokeWidth = context.dpToPx(2)
@@ -176,9 +184,10 @@ class ShahryButton(
             /** Icons **/
             if (buttonType.isText) {
                 if (iconResource != 0) {
-                    gravity = Gravity.START or Gravity.CENTER_VERTICAL
-                    iconGravity = MaterialButton.ICON_GRAVITY_END
+                    gravity = Gravity.CENTER
+                    iconGravity = MaterialButton.ICON_GRAVITY_TEXT_END
                     icon = context.getDrawableResource(iconResource)
+                    iconSize = context.dpToPx(16)
                     iconTint = when {
                         enabled -> null
                         else -> ColorStateList.valueOf(buttonTextDisabledColor)
@@ -194,7 +203,7 @@ class ShahryButton(
             icon = when {
                 isLoading -> materialButton.showProgress(
                     when {
-                        buttonType.isText -> MaterialButton.ICON_GRAVITY_END
+                        buttonType.isText -> MaterialButton.ICON_GRAVITY_TEXT_END
                         else -> MaterialButton.TEXT_ALIGNMENT_CENTER
                     }
                 )
@@ -205,7 +214,7 @@ class ShahryButton(
                 }
             }
             text = when {
-                isLoading -> ""
+                isLoading && !buttonType.isText -> ""
                 else -> buttonText
             }
         }
@@ -214,8 +223,8 @@ class ShahryButton(
     private fun MaterialButton.showProgress(gravity: Int): IndeterminateDrawable<CircularProgressIndicatorSpec> {
         val spec = CircularProgressIndicatorSpec(context, null, 0).apply {
             indicatorColors = intArrayOf(progressColor)
-            indicatorSize = context.dpToPx(16)
-            trackThickness = context.dpToPx(2)
+            indicatorSize = context.dpToPx(if (buttonType == PRIMARY_X_SMALL || buttonType.isText) 16 else 24)
+            trackThickness = context.dpToPx(if (buttonType == PRIMARY_X_SMALL || buttonType.isText) 2 else 3)
         }
 
         iconGravity = gravity

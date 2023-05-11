@@ -27,6 +27,7 @@
         <attr name="buttonStrokeDisabledColor" format="color"/>
 
         <attr name="progressColor" format="color"/>
+        <attr name="rippleColor" format="color"/>
 
         <attr name="iconResource" format="reference"/>
     </declare-styleable>

@@ -37,7 +37,7 @@
     </style>
 
     <style name="ShahryHeadingSmall">
-        <item name="fontFamily">@font/font_vazirmatn_regular</item>
+        <item name="fontFamily">@font/font_vazirmatn_medium</item>
         <item name="android:textSize">@dimen/font_large</item>
         <item name="lineSpacing">@dimen/spacing_small_8</item>
     </style>
@@ -56,7 +56,7 @@
     </style>
 
     <style name="ShahryTitleSmall">
-        <item name="fontFamily">@font/font_vazirmatn_semi_bold</item>
+        <item name="fontFamily">@font/font_vazirmatn_medium</item>
         <item name="android:textSize">@dimen/font_normal</item>
         <item name="lineSpacing">@dimen/spacing_special_6</item>
     </style>
