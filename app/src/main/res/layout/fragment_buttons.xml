@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:background="@color/platinum_50"
     android:orientation="vertical"
     >
 
@@ -24,7 +25,7 @@
             android:id="@+id/llRoot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/platinum_50"
+            android:layout_marginBottom="@dimen/spacing_special_36"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             >
@@ -224,6 +225,7 @@
                 android:layout_height="@dimen/spacing_special_44"
                 android:layout_marginHorizontal="@dimen/spacing_special_52"
                 android:layout_marginTop="@dimen/spacing_small_8"
+                android:layout_marginBottom="@dimen/spacing_normal_16"
                 app:buttonColor="@color/white"
                 app:buttonType="textSmallButton"
                 app:iconResource="@drawable/ic_right"
