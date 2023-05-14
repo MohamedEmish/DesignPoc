@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appBar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/spacing_special_100"
+    android:background="@color/white"
+    android:theme="@style/AppTheme"
+    app:elevation="0dp"
+    >
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:id="@+id/collapsingToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:collapsedTitleTextAppearance="@style/ShahryTitleLarge"
+        app:contentScrim="@color/white"
+        app:expandedTitleMarginStart="@dimen/spacing_normal_16"
+        app:expandedTitleTextAppearance="@style/ShahryHeadingLarge"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        >
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            app:contentInsetEnd="0dp"
+            app:contentInsetEndWithActions="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_collapseMode="pin"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="Title"
+            app:titleTextAppearance="@style/ShahryTitleLarge"
+            app:titleTextColor="@color/black"
+            />
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+</com.google.android.material.appbar.AppBarLayout>
+
+

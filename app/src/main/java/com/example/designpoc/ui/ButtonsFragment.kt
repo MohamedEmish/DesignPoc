@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import com.example.designpoc.R
 import com.example.designpoc.databinding.FragmentButtonsBinding
 import com.example.designpoc.utils.shahryView.ShahryButton
 
@@ -27,29 +28,46 @@ class ButtonsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            ivBack.setOnClickListener {
-                requireActivity().onBackPressedDispatcher.onBackPressed()
-            }
+            appBarLayout.apply {
+                toolbar.apply {
+                    setNavigationOnClickListener {
+                        requireActivity().onBackPressedDispatcher.onBackPressed()
+                    }
+                    setOnMenuItemClickListener { menuItem ->
+                        when (menuItem.itemId) {
+                            R.id.ivEnable -> {
+                                buttonsEnabled = !buttonsEnabled
+                                binding.llRoot.children.forEach {
+                                    if (it is ShahryButton) {
+                                        it.apply {
+                                            render(ShahryButton.State.Initial(buttonsEnabled))
+                                        }
+                                    }
+                                }
+                                true
+                            }
 
-            ivDisable.setOnClickListener {
-                buttonsEnabled = !buttonsEnabled
-                binding.llRoot.children.forEach {
-                    if (it is ShahryButton){
-                        it.apply {
-                            render(ShahryButton.State.Initial(buttonsEnabled))
+                            else -> false
                         }
                     }
+                    title = getString(R.string.buttons)
+                    inflateMenu(R.menu.buttons_toolbar_menu)
+                }
+
+                collapsingToolbar.apply {
+                    setExpandedTitleTextAppearance(R.style.ShahryHeadingLarge)
+                    setCollapsedTitleTextAppearance(R.style.ShahryTitleLarge)
                 }
             }
 
             binding.llRoot.children.forEach {
-                if (it is ShahryButton){
+                if (it is ShahryButton) {
                     it.apply {
-                            addOnButtonCallbackListener(object : ShahryButton.OnButtonCallbacks {
-                                override fun onClicked() {
-                                    click()
-                                }
-                            })
+                        addOnButtonCallbackListener(object : ShahryButton.OnButtonCallbacks {
+                            override fun onClicked() {
+                                click()
+                            }
+                        })
                     }
                 }
             }
@@ -62,6 +80,7 @@ class ButtonsFragment : Fragment() {
             render(ShahryButton.State.Loading(false))
         }, 3000)
     }
+
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
