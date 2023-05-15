@@ -1,5 +1,7 @@
 package com.example.designpoc.utils.shahryView
 
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
 import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Build.VERSION
@@ -7,6 +9,8 @@ import android.os.Build.VERSION_CODES
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View.OnTouchListener
 import android.widget.FrameLayout
 import com.example.designpoc.R
 import com.example.designpoc.databinding.ShahryButtonWidgetBinding
@@ -40,6 +44,45 @@ class ShahryButton(
         override fun onClicked() {
             actionCallbacks?.onClicked()
         }
+    }
+
+    private var onTouchListener = OnTouchListener { view, event ->
+        event?.action?.let {
+            when (it) {
+                MotionEvent.ACTION_DOWN -> {
+                    val reducer = AnimatorInflater.loadAnimator(
+                        context,
+                        R.animator.reduce_size
+                    ) as AnimatorSet
+                    reducer.setTarget(view)
+                    reducer.start()
+
+                    (view as MaterialButton).apply{
+                        backgroundTintList = ColorStateList.valueOf(
+                            buttonRippleColor
+                        )
+                    }
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    val regainer = AnimatorInflater.loadAnimator(
+                        context,
+                        R.animator.regain_size
+                    ) as AnimatorSet
+                    regainer.setTarget(view)
+                    regainer.start()
+                    view.performClick()
+                    (view as MaterialButton).apply{
+                        backgroundTintList = ColorStateList.valueOf(
+                            buttonColor
+                        )
+                    }
+                }
+
+                else -> Unit
+            }
+        }
+        true
     }
 
     private var buttonType = PRIMARY_LARGE
@@ -179,8 +222,9 @@ class ShahryButton(
                 strokeWidth = context.dpToPx(2)
             }
 
-            rippleColor =
-                if (enabled && !buttonType.isText) ColorStateList.valueOf(buttonRippleColor) else rippleColor
+            if (!buttonType.isText && enabled) {
+                setOnTouchListener(onTouchListener)
+            }
 
             /** Icons **/
             if (buttonType.isText) {

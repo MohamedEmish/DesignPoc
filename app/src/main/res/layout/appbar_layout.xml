@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/appBar"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/spacing_special_100"
+    android:layout_height="@dimen/spacing_special_104"
     android:background="@color/white"
     android:theme="@style/AppTheme"
     app:elevation="0dp"
@@ -18,6 +18,7 @@
         app:collapsedTitleTextAppearance="@style/ShahryTitleLarge"
         app:contentScrim="@color/white"
         app:expandedTitleMarginStart="@dimen/spacing_normal_16"
+        app:expandedTitleMarginTop="@dimen/spacing_small_8"
         app:expandedTitleTextAppearance="@style/ShahryHeadingLarge"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         >
