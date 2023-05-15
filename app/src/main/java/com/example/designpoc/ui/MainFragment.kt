@@ -65,6 +65,14 @@ class MainFragment : Fragment() {
                     true
                 )
             }
+            btnOtp.setOnClickListener {
+                parentFragmentManager.replaceFragment(
+                    requireActivity(),
+                    OtpFragment(),
+                    R.id.fragmentContainer,
+                    true
+                )
+            }
         }
     }
 

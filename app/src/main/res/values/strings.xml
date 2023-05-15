@@ -27,4 +27,10 @@
     <string name="select_order_you_want_to_settle">Select Order You Want To Settle</string>
     <string name="buttons">Buttons</string>
     <string name="button">Button</string>
+    <string name="otp" translatable="false">OTP</string>
+    <string name="set_error">Set Error</string>
+    <string name="clear_error">Clear Error</string>
+    <string name="clearFields">Clear Fields</string>
+    <string name="otp_error">Error Message Here</string>
+    <string name="help_text_here">Help Text Here</string>
 </resources>

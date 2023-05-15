@@ -27,4 +27,9 @@
     <string name="select_order_you_want_to_settle">اختر الطلب الذى تود تسوية اقساطه</string>
     <string name="buttons">الازرار</string>
     <string name="button">الزر</string>
+    <string name="set_error">اظهار الخطأ</string>
+    <string name="clear_error">اخفاء الخطأ</string>
+    <string name="clearFields">مسح</string>
+    <string name="otp_error">هنا رسالة الخطأ</string>
+    <string name="help_text_here">هنا رسالة المساعدة</string>
 </resources>

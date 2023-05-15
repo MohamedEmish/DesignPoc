@@ -115,6 +115,12 @@
         <item name="lineSpacing">@dimen/spacing_x_small_4</item>
     </style>
 
+                        <!-- OTP   -->
+    <style name="ShahryPinViewStyle">
+        <item name="android:textAppearance">@style/ShahryBodyLarge</item>
+        <item name="colorAccent">@color/black</item>
+    </style>
+
 
     <style name="Poc.ButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">wrap_content</item>

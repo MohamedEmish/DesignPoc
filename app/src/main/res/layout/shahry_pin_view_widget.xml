@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical"
+    >
+
+    <com.example.designpoc.utils.shahryView.PinView
+        android:id="@+id/pinView"
+        android:theme="@style/ShahryPinViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layoutDirection="ltr"
+        android:textDirection="ltr"
+        app:cursorVisible="true"
+        app:forceKeyboard="true"
+        app:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:password="false"
+        app:pinBackground="@drawable/pin_background"
+        app:pinHeight="@dimen/spacing_special_56"
+        app:pinViewLength="5"
+        app:pinWidth="@dimen/spacing_special_42"
+        app:splitWidth="@dimen/spacing_normal_16"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvHint"
+        style="@style/ShahryBodySmall"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_special_20"
+        android:textColor="@color/platinum_600"
+        app:layout_constraintEnd_toEndOf="@id/pinView"
+        app:layout_constraintStart_toStartOf="@id/pinView"
+        app:layout_constraintTop_toBottomOf="@id/pinView"
+        tools:text="hint hext"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

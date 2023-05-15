@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    >
+
+    <include
+        android:id="@+id/appBarLayout"
+        layout="@layout/appbar_layout"
+        />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <com.example.designpoc.utils.shahryView.ShahryPinView
+                android:id="@+id/shahryPinView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:pinViewLength="4"
+                app:pinViewHint="@string/help_text_here"
+                />
+
+            <com.example.designpoc.utils.shahryView.ShahryButton
+                android:id="@+id/btnClearFields"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_special_44"
+                android:layout_marginHorizontal="@dimen/spacing_special_52"
+                android:layout_marginTop="@dimen/spacing_small_8"
+                app:buttonColor="@color/black"
+                app:buttonDisabledColor="@color/platinum_400"
+                app:buttonType="primarySmallButton"
+                app:progressColor="@color/white"
+                app:rippleColor="@color/platinum_900"
+                app:text="@string/clearFields"
+                app:textColor="@color/white"
+                />
+
+            <com.example.designpoc.utils.shahryView.ShahryButton
+                android:id="@+id/btnSetError"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_special_44"
+                android:layout_marginHorizontal="@dimen/spacing_special_52"
+                android:layout_marginTop="@dimen/spacing_small_8"
+                app:buttonColor="@color/black"
+                app:buttonDisabledColor="@color/platinum_400"
+                app:buttonType="primarySmallButton"
+                app:progressColor="@color/white"
+                app:rippleColor="@color/platinum_900"
+                app:text="@string/set_error"
+                app:textColor="@color/white"
+                />
+
+            <com.example.designpoc.utils.shahryView.ShahryButton
+                android:id="@+id/btnClearError"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_special_44"
+                android:layout_marginHorizontal="@dimen/spacing_special_52"
+                android:layout_marginTop="@dimen/spacing_small_8"
+                app:buttonColor="@color/black"
+                app:buttonDisabledColor="@color/platinum_400"
+                app:buttonType="primarySmallButton"
+                app:progressColor="@color/white"
+                app:rippleColor="@color/platinum_900"
+                app:text="@string/clear_error"
+                app:textColor="@color/white"
+                />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
