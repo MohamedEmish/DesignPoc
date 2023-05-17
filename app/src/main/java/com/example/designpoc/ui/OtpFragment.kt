@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.designpoc.R
-import com.example.designpoc.R.string
 import com.example.designpoc.databinding.FragmentOtpBinding
 import com.example.designpoc.utils.shahryView.ShahryButton
 import com.example.designpoc.utils.shahryView.ShahryPinView
 import com.example.designpoc.utils.shahryView.ShahryPinView.State.Error
 import com.example.designpoc.utils.shahryView.ShahryPinView.State.Initial
+import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.TRANSITION
+import com.example.designpoc.utils.shahryView.configureAppBar
 
 class OtpFragment: Fragment() {
     private var _binding: FragmentOtpBinding? = null
@@ -31,21 +32,21 @@ class OtpFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             appBarLayout.apply {
-                toolbar.apply {
-                    setNavigationOnClickListener {
+                configureAppBar(
+                    title =  getString(R.string.otp),
+                    animationType = TRANSITION,
+                    hasNavigationIcon = true,
+                    navIcon = R.drawable.ic_back,
+                    onNavigationClicked = {
                         requireActivity().onBackPressedDispatcher.onBackPressed()
-                    }
-                    title = getString(R.string.otp)
-                }
-
-                collapsingToolbar.apply {
-                    setExpandedTitleTextAppearance(R.style.ShahryHeadingLarge)
-                    setCollapsedTitleTextAppearance(R.style.ShahryTitleLarge)
-                }
+                    },
+                    onMenuItemClicked = { Unit }
+                )
             }
+
             btnSetError.addOnButtonCallbackListener(object : ShahryButton.OnButtonCallbacks{
                 override fun onClicked() {
-                    shahryPinView.render(Error (getString(string.otp_error)))
+                    shahryPinView.render(Error (getString(R.string.otp_error)))
                 }
             })
             btnClearError.addOnButtonCallbackListener(object : ShahryButton.OnButtonCallbacks{

@@ -19,6 +19,7 @@
     <dimen name="spacing_x_small_4">4dp</dimen>
 
     <!-- Special Spacing Sizes -->
+    <dimen name="spacing_special_140">140dp</dimen>
     <dimen name="spacing_special_104">104dp</dimen>
     <dimen name="spacing_special_100">100dp</dimen>
     <dimen name="spacing_special_72">72dp</dimen>

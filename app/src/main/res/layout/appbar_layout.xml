@@ -2,9 +2,10 @@
 <com.google.android.material.appbar.AppBarLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/appBar"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/spacing_special_104"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:theme="@style/AppTheme"
     app:elevation="0dp"
@@ -13,7 +14,7 @@
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/collapsingToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/spacing_special_140"
         android:background="@color/white"
         app:collapsedTitleTextAppearance="@style/ShahryTitleLarge"
         app:contentScrim="@color/white"
@@ -22,6 +23,21 @@
         app:expandedTitleTextAppearance="@style/ShahryHeadingLarge"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvExpandedTitle"
+            style="@style/ShahryHeadingLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            android:gravity="start"
+            android:paddingHorizontal="@dimen/spacing_normal_16"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_collapseMode="parallax"
+            tools:text="Toolbar Title"
+            />
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
