@@ -36,7 +36,9 @@ fun AppbarLayoutBinding.setAppBarFadeAnimation() {
             }
             if (verticalOffset == 0) {
                 toolbar.setTitleTextColor(Color.TRANSPARENT)
-            } else {
+            } else if (
+                scrollRange + verticalOffset != 0
+            ) {
                 val alpha = abs(verticalOffset).toFloat() / scrollRange
                 var color = Color.BLACK
                 color = color and 0x00ffffff or ((alpha * 255).toInt().toByte().toInt() shl 24)
@@ -44,8 +46,7 @@ fun AppbarLayoutBinding.setAppBarFadeAnimation() {
                 var topColor = Color.BLACK
                 topColor = topColor and 0x00ffffff or (((1 - alpha) * 255).toInt().toByte().toInt() shl 24)
                 tvExpandedTitle.setTextColor(topColor)
-            }
-            if (scrollRange + verticalOffset == 0) {
+            } else if (scrollRange + verticalOffset == 0) {
                 tvExpandedTitle.setTextColor(Color.TRANSPARENT)
             }
         }
