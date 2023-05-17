@@ -47,7 +47,7 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
     /**
      * Attributes
      */
-    private var mPinLength = 4
+    private var mPinLength = 6
     private val editTextList: MutableList<EditText> = mutableListOf()
     private var mPinWidth = 50
     private var mTextSize = 12
@@ -138,7 +138,7 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
             editText.textSize = mTextSize.toFloat()
             editText.setTextColor(ContextCompat.getColor(this.context, mTextColor))
             if (VERSION.SDK_INT >= VERSION_CODES.M) {
-                editText.setTextAppearance(R.style.ShahryPinViewStyle)
+                editText.setTextAppearance(R.style.ShahryBodyLarge)
             }
                        editTextList.add(i, editText)
             this.addView(editText)

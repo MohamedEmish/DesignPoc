@@ -11,12 +11,12 @@
 
     <com.example.designpoc.utils.shahryView.PinView
         android:id="@+id/pinView"
-        android:theme="@style/ShahryPinViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layoutDirection="ltr"
         android:textDirection="ltr"
+        android:theme="@style/ShahryPinViewStyle"
         app:cursorVisible="true"
         app:forceKeyboard="true"
         app:inputType="number"
@@ -26,7 +26,7 @@
         app:password="false"
         app:pinBackground="@drawable/pin_background"
         app:pinHeight="@dimen/spacing_special_56"
-        app:pinViewLength="5"
+        app:pinLength="6"
         app:pinWidth="@dimen/spacing_special_42"
         app:splitWidth="@dimen/spacing_normal_16"
         />
@@ -36,7 +36,7 @@
         style="@style/ShahryBodySmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_special_20"
+        android:layout_marginHorizontal="@dimen/spacing_special_20"
         android:textColor="@color/platinum_600"
         app:layout_constraintEnd_toEndOf="@id/pinView"
         app:layout_constraintStart_toStartOf="@id/pinView"

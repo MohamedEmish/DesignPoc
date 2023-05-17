@@ -53,6 +53,5 @@
 
     <declare-styleable name="ShahryPinView">
         <attr name="pinViewHint" format="reference"/>
-        <attr name="pinViewLength" format="integer" />
     </declare-styleable>
 </resources>

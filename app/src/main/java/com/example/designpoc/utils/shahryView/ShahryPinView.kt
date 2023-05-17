@@ -48,25 +48,18 @@ class ShahryPinView(
         }
 
     }
-    private var pinLength = 5
     private var pinViewHint = 0
 
     init {
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.ShahryPinView)
 
         if (attrs != null) {
-            pinLength = attributes.getInt(
-                R.styleable.ShahryPinView_pinViewLength,
-                5
-            )
-
             pinViewHint = attributes.getResourceId(
                 R.styleable.ShahryPinView_pinViewHint,
                 5
             )
         }
         binding.pinView.apply {
-            setPinLength(pinLength)
             setPinViewEventListener(pinViewListener)
         }
         binding.renderInitial()
