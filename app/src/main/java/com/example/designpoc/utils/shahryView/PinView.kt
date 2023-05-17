@@ -16,6 +16,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
+import android.view.inputmethod.InputMethodSubtype
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
@@ -23,6 +24,7 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.setMargins
 import com.example.designpoc.R
+import com.example.designpoc.utils.shahryView.PinView.InputType.NUMBER
 import java.util.*
 
 /**
@@ -140,7 +142,7 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
             if (VERSION.SDK_INT >= VERSION_CODES.M) {
                 editText.setTextAppearance(R.style.ShahryBodyLarge)
             }
-                       editTextList.add(i, editText)
+            editTextList.add(i, editText)
             this.addView(editText)
             generateOneEditText(editText, "" + i)
         }
@@ -476,6 +478,7 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
         pinBackground = res
         editTextList.forEach { it.setBackgroundResource(res) }
     }
+
     fun setPinLength(length: Int) {
         mPinLength = length
         createEditTexts()

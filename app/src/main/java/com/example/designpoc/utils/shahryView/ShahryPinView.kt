@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import com.example.designpoc.R
 import com.example.designpoc.databinding.ShahryPinViewWidgetBinding
 import com.example.designpoc.utils.extensions.getColorResource
+import com.example.designpoc.utils.extensions.showSoftKeyboard
 import com.example.designpoc.utils.shahryView.ShahryButton.OnButtonCallbacks
 import com.example.designpoc.utils.shahryView.ShahryPinView.State
 import com.example.designpoc.utils.shahryView.ShahryPinView.State.Error
@@ -61,6 +62,8 @@ class ShahryPinView(
         }
         binding.pinView.apply {
             setPinViewEventListener(pinViewListener)
+            requestFocus()
+            showSoftKeyboard()
         }
         binding.renderInitial()
         attributes.recycle()
