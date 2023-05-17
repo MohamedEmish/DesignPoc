@@ -57,7 +57,7 @@ class ShahryButton(
                     reducer.setTarget(view)
                     reducer.start()
 
-                    (view as MaterialButton).apply{
+                    (view as MaterialButton).apply {
                         backgroundTintList = ColorStateList.valueOf(
                             buttonRippleColor
                         )
@@ -72,7 +72,7 @@ class ShahryButton(
                     regainer.setTarget(view)
                     regainer.start()
                     view.performClick()
-                    (view as MaterialButton).apply{
+                    (view as MaterialButton).apply {
                         backgroundTintList = ColorStateList.valueOf(
                             buttonColor
                         )
@@ -243,7 +243,6 @@ class ShahryButton(
     }
 
     private fun ShahryButtonWidgetBinding.renderLoading(isLoading: Boolean) {
-        isEnabled = !isLoading
         materialButton.apply {
             icon = when {
                 isLoading -> materialButton.showProgress(
@@ -262,6 +261,14 @@ class ShahryButton(
                 isLoading && !buttonType.isText -> ""
                 else -> buttonText
             }
+
+            if (!buttonType.isText) {
+                when {
+                    isLoading -> setOnTouchListener(null)
+                    else -> setOnTouchListener(onTouchListener)
+                }
+            }
+            isEnabled = !isLoading
         }
     }
 
@@ -269,7 +276,7 @@ class ShahryButton(
         val spec = CircularProgressIndicatorSpec(context, null, 0).apply {
             indicatorColors = intArrayOf(progressColor)
             indicatorSize = context.dpToPx(if (buttonType == PRIMARY_X_SMALL || buttonType.isText) 16 else 24)
-            trackThickness = context.dpToPx(if (buttonType == PRIMARY_X_SMALL || buttonType.isText) 2 else 3)
+            trackThickness = context.dpToPx(3)
         }
 
         iconGravity = gravity
