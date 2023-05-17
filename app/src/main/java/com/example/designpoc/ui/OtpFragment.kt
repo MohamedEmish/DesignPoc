@@ -13,7 +13,7 @@ import com.example.designpoc.utils.shahryView.ShahryPinView
 import com.example.designpoc.utils.shahryView.ShahryPinView.State.Error
 import com.example.designpoc.utils.shahryView.ShahryPinView.State.Initial
 import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.TRANSITION
-import com.example.designpoc.utils.shahryView.configureAppBar
+import com.example.designpoc.utils.shahryView.appBar.configureAppBar
 
 class OtpFragment: Fragment() {
     private var _binding: FragmentOtpBinding? = null

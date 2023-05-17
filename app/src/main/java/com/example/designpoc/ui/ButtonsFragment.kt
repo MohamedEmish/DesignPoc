@@ -12,7 +12,7 @@ import com.example.designpoc.R
 import com.example.designpoc.databinding.FragmentButtonsBinding
 import com.example.designpoc.utils.shahryView.ShahryButton
 import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.FADE
-import com.example.designpoc.utils.shahryView.configureAppBar
+import com.example.designpoc.utils.shahryView.appBar.configureAppBar
 
 class ButtonsFragment : Fragment() {
     private var _binding: FragmentButtonsBinding? = null

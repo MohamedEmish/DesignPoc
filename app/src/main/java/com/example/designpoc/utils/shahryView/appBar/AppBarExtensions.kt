@@ -1,4 +1,4 @@
-package com.example.designpoc.utils.shahryView
+package com.example.designpoc.utils.shahryView.appBar
 
 import android.graphics.Color
 import android.view.MenuItem
@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import com.example.designpoc.R
 import com.example.designpoc.databinding.AppbarLayoutBinding
 import com.example.designpoc.utils.extensions.getDrawableResource
-import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation
 import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.FADE
 import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.TRANSITION
 import com.google.android.material.appbar.AppBarLayout
