@@ -38,13 +38,7 @@ class ShahryButton(
 
     private val binding by lazy { ShahryButtonWidgetBinding.inflate(LayoutInflater.from(context), this, true) }
 
-    private var actionCallbacks: OnButtonCallbacks? = null
-
-    private var callbacks: OnButtonCallbacks = object : OnButtonCallbacks {
-        override fun onClicked() {
-            actionCallbacks?.onClicked()
-        }
-    }
+    private var onClicked: () -> Unit = {}
 
     private var onTouchListener = OnTouchListener { view, event ->
         event?.action?.let {
@@ -188,7 +182,7 @@ class ShahryButton(
         materialButton.apply {
             /** Actions **/
             setSafeOnClickListener {
-                callbacks.onClicked()
+                onClicked.invoke()
             }
             isEnabled = enabled
 
@@ -283,8 +277,8 @@ class ShahryButton(
         return IndeterminateDrawable.createCircularDrawable(context, spec)
     }
 
-    fun addOnButtonCallbackListener(callback: OnButtonCallbacks) {
-        actionCallbacks = callback
+    fun setOnClickActionListener(onClicked: () -> Unit) {
+        this.onClicked = onClicked
     }
 
     sealed class State : Widget.State {
@@ -331,9 +325,5 @@ class ShahryButton(
                 TEXT_MEDIUM -> R.style.ShahryTitleSmall
                 TEXT_SMALL -> R.style.ShahryLabelSmall
             }
-    }
-
-    interface OnButtonCallbacks {
-        fun onClicked()
     }
 }

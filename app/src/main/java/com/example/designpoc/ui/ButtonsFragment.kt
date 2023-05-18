@@ -32,7 +32,7 @@ class ButtonsFragment : Fragment() {
         with(binding) {
             appBarLayout.apply {
                 configureAppBar(
-                    title =  getString(R.string.buttons),
+                    title = getString(R.string.buttons),
                     animationType = FADE,
                     hasNavigationIcon = true,
                     navIcon = R.drawable.ic_back,
@@ -60,11 +60,9 @@ class ButtonsFragment : Fragment() {
             binding.llRoot.children.forEach {
                 if (it is ShahryButton) {
                     it.apply {
-                        addOnButtonCallbackListener(object : ShahryButton.OnButtonCallbacks {
-                            override fun onClicked() {
-                                click()
-                            }
-                        })
+                        setOnClickActionListener {
+                            click()
+                        }
                     }
                 }
             }
@@ -75,7 +73,7 @@ class ButtonsFragment : Fragment() {
         render(ShahryButton.State.Loading(true))
         Handler(Looper.getMainLooper()).postDelayed({
             render(ShahryButton.State.Loading(false))
-        }, 10000)
+        }, 3000)
     }
 
     override fun onDestroy() {

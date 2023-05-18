@@ -1,4 +1,4 @@
-package com.shahry.designsystem.shahryView
+package com.example.designpoc.utils.shahryView
 
 class ShahryInputField {
 }

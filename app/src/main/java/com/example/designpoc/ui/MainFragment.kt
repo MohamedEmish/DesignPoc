@@ -1,21 +1,13 @@
 package com.example.designpoc.ui
 
-import android.Manifest.permission.CAMERA
-import android.Manifest.permission.RECORD_AUDIO
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
 import com.example.designpoc.R
 import com.example.designpoc.databinding.FragmentMainBinding
-import com.example.designpoc.utils.permission.PermissionResult.DENIED
-import com.example.designpoc.utils.permission.PermissionResult.GRANTED
-import com.example.designpoc.utils.permission.PermissionResult.RATIONAL_REASON
-import com.example.designpoc.utils.permission.registerMultiplePermissionLauncher
 import com.example.designpoc.utils.replaceFragment
 import com.yariksoffice.lingver.Lingver
 
@@ -35,13 +27,13 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            btnArabic.setOnClickListener {
+            btnArabic.setOnClickActionListener {
                 handleCheckedLanguage("ar")
             }
-            btnEnglish.setOnClickListener {
+            btnEnglish.setOnClickActionListener {
                 handleCheckedLanguage("en")
             }
-            btnTestCase.setOnClickListener {
+            btnTestCase.setOnClickActionListener {
                 parentFragmentManager.replaceFragment(
                     requireActivity(),
                     TestCaseFragment(),
@@ -49,7 +41,7 @@ class MainFragment : Fragment() {
                     true
                 )
             }
-            btnDesignSystem.setOnClickListener {
+            btnDesignSystem.setOnClickActionListener {
                 parentFragmentManager.replaceFragment(
                     requireActivity(),
                     DesignSystemFragment(),
@@ -57,7 +49,7 @@ class MainFragment : Fragment() {
                     true
                 )
             }
-            btnButtons.setOnClickListener {
+            btnButtons.setOnClickActionListener {
                 parentFragmentManager.replaceFragment(
                     requireActivity(),
                     ButtonsFragment(),
@@ -65,7 +57,7 @@ class MainFragment : Fragment() {
                     true
                 )
             }
-            btnOtp.setOnClickListener {
+            btnOtp.setOnClickActionListener {
                 parentFragmentManager.replaceFragment(
                     requireActivity(),
                     OtpFragment(),
@@ -73,6 +65,7 @@ class MainFragment : Fragment() {
                     true
                 )
             }
+            btnEnglish.setOnClickListener { }
         }
     }
 

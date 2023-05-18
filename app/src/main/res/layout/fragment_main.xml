@@ -4,78 +4,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    >
 
-    <com.google.android.material.button.MaterialButton
+    <com.example.designpoc.utils.shahryView.ShahryButton
         android:id="@+id/btnEnglish"
-        style="@style/Poc.ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/english"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnArabic"
-        style="@style/Poc.ButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/arabic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnDesignSystem"
-        style="@style/Poc.ButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:text="@string/design_system"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:buttonType="secondarySmallButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.251"
+        app:text="@string/english"
         />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnTestCase"
-        style="@style/Poc.ButtonStyle"
+    <com.example.designpoc.utils.shahryView.ShahryButton
+        android:id="@+id/btnArabic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/test_case"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnDesignSystem"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.1"
+        app:buttonType="secondarySmallButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:text="@string/arabic"
+        />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnButtons"
-        style="@style/Poc.ButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/buttons"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnTestCase"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnEnglish"
+        >
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnOtp"
-        style="@style/Poc.ButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/otp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnButtons"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <com.example.designpoc.utils.shahryView.ShahryButton
+            android:id="@+id/btnDesignSystem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:buttonType="primaryLargeButton"
+            app:text="@string/design_system"
+            />
 
+        <com.example.designpoc.utils.shahryView.ShahryButton
+            android:id="@+id/btnTestCase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:buttonType="primaryLargeButton"
+            app:text="@string/test_case"
+            />
+
+        <com.example.designpoc.utils.shahryView.ShahryButton
+            android:id="@+id/btnButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:buttonType="primaryLargeButton"
+            app:text="@string/buttons"
+            />
+
+        <com.example.designpoc.utils.shahryView.ShahryButton
+            android:id="@+id/btnOtp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:buttonType="primaryLargeButton"
+            app:text="@string/otp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,8 +66,8 @@ fun AppbarLayoutBinding.configureAppBar(
     hasNavigationIcon: Boolean = true,
     @DrawableRes navIcon: Int = R.drawable.ic_back,
     @MenuRes menuRes: Int = 0,
-    onNavigationClicked: () -> Unit,
-    onMenuItemClicked: (menuItem: MenuItem) -> Unit,
+    onNavigationClicked: () -> Unit = {},
+    onMenuItemClicked: (menuItem: MenuItem) -> Unit = {},
 ) {
     setTitle(title)
     toolbar.apply {

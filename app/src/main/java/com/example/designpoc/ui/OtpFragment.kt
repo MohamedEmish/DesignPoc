@@ -8,18 +8,18 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.designpoc.R
 import com.example.designpoc.databinding.FragmentOtpBinding
-import com.example.designpoc.utils.shahryView.ShahryButton
+import com.example.designpoc.utils.extensions.hideKeyboard
 import com.example.designpoc.utils.shahryView.ShahryPinView
 import com.example.designpoc.utils.shahryView.ShahryPinView.State.Error
 import com.example.designpoc.utils.shahryView.ShahryPinView.State.Initial
 import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.TRANSITION
 import com.example.designpoc.utils.shahryView.appBar.configureAppBar
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 
-class OtpFragment: Fragment() {
+class OtpFragment : Fragment() {
     private var _binding: FragmentOtpBinding? = null
     private val binding get() = _binding!!
 
-    private var buttonsEnabled = true
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -33,39 +33,31 @@ class OtpFragment: Fragment() {
         with(binding) {
             appBarLayout.apply {
                 configureAppBar(
-                    title =  getString(R.string.otp),
+                    title = getString(R.string.otp),
                     animationType = TRANSITION,
                     hasNavigationIcon = true,
                     navIcon = R.drawable.ic_back,
                     onNavigationClicked = {
                         requireActivity().onBackPressedDispatcher.onBackPressed()
                     },
-                    onMenuItemClicked = { Unit }
                 )
             }
 
-            btnSetError.addOnButtonCallbackListener(object : ShahryButton.OnButtonCallbacks{
-                override fun onClicked() {
-                    shahryPinView.render(Error (getString(R.string.otp_error)))
-                }
-            })
-            btnClearError.addOnButtonCallbackListener(object : ShahryButton.OnButtonCallbacks{
-                override fun onClicked() {
-                    shahryPinView.render(Initial())
-                }
+            btnSetError.setOnClickActionListener {
+                shahryPinView.render(Error(getString(R.string.otp_error)))
+            }
+            btnClearError.setOnClickActionListener {
+                shahryPinView.render(Initial())
+            }
 
-            })
-            btnClearFields.addOnButtonCallbackListener(object : ShahryButton.OnButtonCallbacks{
-                override fun onClicked() {
-                    shahryPinView.render(Initial(true))
-                }
-            })
+            btnClearFields.setOnClickActionListener {
+                shahryPinView.render(Initial(true))
+            }
 
-            shahryPinView.addCallbackListener(object : ShahryPinView.OnButtonCallbacks {
-                override fun onValueEntered(value: String) {
-                    Toast.makeText(requireContext(), value, Toast.LENGTH_SHORT).show()
-                }
-            })
+            shahryPinView.setOnValueEnteredAction { value ->
+                Toast.makeText(requireContext(), value, Toast.LENGTH_SHORT).show()
+                requireContext().hideKeyboard(shahryPinView)
+            }
         }
     }
 

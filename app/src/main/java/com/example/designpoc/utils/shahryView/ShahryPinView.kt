@@ -9,7 +9,6 @@ import com.example.designpoc.R
 import com.example.designpoc.databinding.ShahryPinViewWidgetBinding
 import com.example.designpoc.utils.extensions.getColorResource
 import com.example.designpoc.utils.extensions.showSoftKeyboard
-import com.example.designpoc.utils.shahryView.ShahryButton.OnButtonCallbacks
 import com.example.designpoc.utils.shahryView.ShahryPinView.State
 import com.example.designpoc.utils.shahryView.ShahryPinView.State.Error
 import com.example.designpoc.utils.shahryView.ShahryPinView.State.Filled
@@ -25,18 +24,12 @@ class ShahryPinView(
 
     private val binding by lazy { ShahryPinViewWidgetBinding.inflate(LayoutInflater.from(context), this, true) }
 
-    private var actionCallbacks: OnButtonCallbacks? = null
-
-    private var callbacks: OnButtonCallbacks = object : OnButtonCallbacks {
-        override fun onValueEntered(value: String) {
-            actionCallbacks?.onValueEntered(value)
-        }
-    }
+    private var onValueEntered: (value: String) -> Unit = {}
 
     private val pinViewListener = object : PinView.PinViewEventListener {
         override fun onDataEntered(pinView: PinView?, fromUser: Boolean) {
             pinView?.value?.let {
-                callbacks.onValueEntered(it)
+                onValueEntered.invoke(it)
                 binding.renderFilled()
                 binding.pinView.clearFocus()
             }
@@ -143,17 +136,13 @@ class ShahryPinView(
         }
     }
 
-    fun addCallbackListener(callback: OnButtonCallbacks) {
-        actionCallbacks = callback
+    fun setOnValueEnteredAction(onValueEntered: (value: String) -> Unit) {
+        this.onValueEntered = onValueEntered
     }
 
     sealed class State : Widget.State {
         data class Initial(val clearFields: Boolean = false) : State()
         data class Error(val message: String) : State()
         object Filled : State()
-    }
-
-    interface OnButtonCallbacks {
-        fun onValueEntered(value: String)
     }
 }
