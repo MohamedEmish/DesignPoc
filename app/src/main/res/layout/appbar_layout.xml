@@ -14,7 +14,7 @@
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/collapsingToolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing_special_140"
+        android:layout_height="@dimen/spacing_special_112"
         android:background="@color/white"
         app:collapsedTitleTextAppearance="@style/ShahryTitleLarge"
         app:contentScrim="@color/white"

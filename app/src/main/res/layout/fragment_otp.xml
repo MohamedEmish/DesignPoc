@@ -29,8 +29,9 @@
 
             <com.example.designpoc.utils.shahryView.ShahryPinView
                 android:id="@+id/shahryPinView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal_16"
                 app:pinViewHint="@string/help_text_here"
                 />
 

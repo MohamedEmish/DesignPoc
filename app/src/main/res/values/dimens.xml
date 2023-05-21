@@ -20,6 +20,7 @@
 
     <!-- Special Spacing Sizes -->
     <dimen name="spacing_special_140">140dp</dimen>
+    <dimen name="spacing_special_112">112dp</dimen>
     <dimen name="spacing_special_104">104dp</dimen>
     <dimen name="spacing_special_100">100dp</dimen>
     <dimen name="spacing_special_72">72dp</dimen>
