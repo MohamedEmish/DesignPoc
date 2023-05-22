@@ -19,10 +19,15 @@
     <dimen name="spacing_x_small_4">4dp</dimen>
 
     <!-- Special Spacing Sizes -->
+    <dimen name="spacing_special_140">140dp</dimen>
+    <dimen name="spacing_special_112">112dp</dimen>
+    <dimen name="spacing_special_104">104dp</dimen>
     <dimen name="spacing_special_100">100dp</dimen>
     <dimen name="spacing_special_72">72dp</dimen>
+    <dimen name="spacing_special_56">56dp</dimen>
     <dimen name="spacing_special_52">52dp</dimen>
     <dimen name="spacing_special_44">44dp</dimen>
+    <dimen name="spacing_special_42">42dp</dimen>
     <dimen name="spacing_special_36">36dp</dimen>
     <dimen name="spacing_special_32">32dp</dimen>
     <dimen name="spacing_special_20">20dp</dimen>

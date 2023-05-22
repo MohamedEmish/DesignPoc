@@ -1,5 +1,7 @@
 package com.example.designpoc.utils.shahryView
 
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
 import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Build.VERSION
@@ -7,6 +9,8 @@ import android.os.Build.VERSION_CODES
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View.OnTouchListener
 import android.widget.FrameLayout
 import com.example.designpoc.R
 import com.example.designpoc.databinding.ShahryButtonWidgetBinding
@@ -34,12 +38,45 @@ class ShahryButton(
 
     private val binding by lazy { ShahryButtonWidgetBinding.inflate(LayoutInflater.from(context), this, true) }
 
-    private var actionCallbacks: OnButtonCallbacks? = null
+    private var onClicked: () -> Unit = {}
 
-    private var callbacks: OnButtonCallbacks = object : OnButtonCallbacks {
-        override fun onClicked() {
-            actionCallbacks?.onClicked()
+    private var onTouchListener = OnTouchListener { view, event ->
+        event?.action?.let {
+            when (it) {
+                MotionEvent.ACTION_DOWN -> {
+                    val reducer = AnimatorInflater.loadAnimator(
+                        context,
+                        R.animator.reduce_size
+                    ) as AnimatorSet
+                    reducer.setTarget(view)
+                    reducer.start()
+
+                    (view as MaterialButton).apply {
+                        backgroundTintList = ColorStateList.valueOf(
+                            buttonRippleColor
+                        )
+                    }
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    val regainer = AnimatorInflater.loadAnimator(
+                        context,
+                        R.animator.regain_size
+                    ) as AnimatorSet
+                    regainer.setTarget(view)
+                    regainer.start()
+                    view.performClick()
+                    (view as MaterialButton).apply {
+                        backgroundTintList = ColorStateList.valueOf(
+                            buttonColor
+                        )
+                    }
+                }
+
+                else -> Unit
+            }
         }
+        true
     }
 
     private var buttonType = PRIMARY_LARGE
@@ -145,7 +182,7 @@ class ShahryButton(
         materialButton.apply {
             /** Actions **/
             setSafeOnClickListener {
-                callbacks.onClicked()
+                onClicked.invoke()
             }
             isEnabled = enabled
 
@@ -179,8 +216,9 @@ class ShahryButton(
                 strokeWidth = context.dpToPx(2)
             }
 
-            rippleColor =
-                if (enabled && !buttonType.isText) ColorStateList.valueOf(buttonRippleColor) else rippleColor
+            if (!buttonType.isText && enabled) {
+                setOnTouchListener(onTouchListener)
+            }
 
             /** Icons **/
             if (buttonType.isText) {
@@ -199,7 +237,6 @@ class ShahryButton(
     }
 
     private fun ShahryButtonWidgetBinding.renderLoading(isLoading: Boolean) {
-        isEnabled = !isLoading
         materialButton.apply {
             icon = when {
                 isLoading -> materialButton.showProgress(
@@ -218,6 +255,14 @@ class ShahryButton(
                 isLoading && !buttonType.isText -> ""
                 else -> buttonText
             }
+
+            if (!buttonType.isText) {
+                when {
+                    isLoading -> setOnTouchListener(null)
+                    else -> setOnTouchListener(onTouchListener)
+                }
+            }
+            isEnabled = !isLoading
         }
     }
 
@@ -225,15 +270,15 @@ class ShahryButton(
         val spec = CircularProgressIndicatorSpec(context, null, 0).apply {
             indicatorColors = intArrayOf(progressColor)
             indicatorSize = context.dpToPx(if (buttonType == PRIMARY_X_SMALL || buttonType.isText) 16 else 24)
-            trackThickness = context.dpToPx(if (buttonType == PRIMARY_X_SMALL || buttonType.isText) 2 else 3)
+            trackThickness = context.dpToPx(3)
         }
 
         iconGravity = gravity
         return IndeterminateDrawable.createCircularDrawable(context, spec)
     }
 
-    fun addOnButtonCallbackListener(callback: OnButtonCallbacks) {
-        actionCallbacks = callback
+    fun setOnClickActionListener(onClicked: () -> Unit) {
+        this.onClicked = onClicked
     }
 
     sealed class State : Widget.State {
@@ -280,9 +325,5 @@ class ShahryButton(
                 TEXT_MEDIUM -> R.style.ShahryTitleSmall
                 TEXT_SMALL -> R.style.ShahryLabelSmall
             }
-    }
-
-    interface OnButtonCallbacks {
-        fun onClicked()
     }
 }

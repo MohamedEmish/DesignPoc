@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import com.example.designpoc.R
 import com.example.designpoc.databinding.FragmentButtonsBinding
 import com.example.designpoc.utils.shahryView.ShahryButton
+import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.FADE
+import com.example.designpoc.utils.shahryView.appBar.configureAppBar
 
 class ButtonsFragment : Fragment() {
     private var _binding: FragmentButtonsBinding? = null
@@ -29,11 +31,16 @@ class ButtonsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             appBarLayout.apply {
-                toolbar.apply {
-                    setNavigationOnClickListener {
+                configureAppBar(
+                    title = getString(R.string.buttons),
+                    animationType = FADE,
+                    hasNavigationIcon = true,
+                    navIcon = R.drawable.ic_back,
+                    menuRes = R.menu.buttons_toolbar_menu,
+                    onNavigationClicked = {
                         requireActivity().onBackPressedDispatcher.onBackPressed()
-                    }
-                    setOnMenuItemClickListener { menuItem ->
+                    },
+                    onMenuItemClicked = { menuItem ->
                         when (menuItem.itemId) {
                             R.id.ivEnable -> {
                                 buttonsEnabled = !buttonsEnabled
@@ -44,30 +51,18 @@ class ButtonsFragment : Fragment() {
                                         }
                                     }
                                 }
-                                true
                             }
-
-                            else -> false
                         }
                     }
-                    title = getString(R.string.buttons)
-                    inflateMenu(R.menu.buttons_toolbar_menu)
-                }
-
-                collapsingToolbar.apply {
-                    setExpandedTitleTextAppearance(R.style.ShahryHeadingLarge)
-                    setCollapsedTitleTextAppearance(R.style.ShahryTitleLarge)
-                }
+                )
             }
 
             binding.llRoot.children.forEach {
                 if (it is ShahryButton) {
                     it.apply {
-                        addOnButtonCallbackListener(object : ShahryButton.OnButtonCallbacks {
-                            override fun onClicked() {
-                                click()
-                            }
-                        })
+                        setOnClickActionListener {
+                            click()
+                        }
                     }
                 }
             }
