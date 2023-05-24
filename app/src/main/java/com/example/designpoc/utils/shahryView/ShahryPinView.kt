@@ -126,13 +126,19 @@ class ShahryPinView(
         }
 
         tvHint.apply {
-            text = ""
+            text = when (pinViewHint) {
+                0 -> ""
+                else -> context.getString(pinViewHint)
+            }
             setTextColor(
                 ColorStateList.valueOf(
                     context.getColorResource(R.color.platinum_600)
                 )
             )
-            visibility = INVISIBLE
+            visibility = when (pinViewHint) {
+                0 -> INVISIBLE
+                else -> VISIBLE
+            }
         }
     }
 
