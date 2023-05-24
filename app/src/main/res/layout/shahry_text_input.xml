@@ -21,7 +21,6 @@
         app:boxCornerRadiusTopStart="@dimen/spacing_special_12"
         app:hintAnimationEnabled="true"
         app:hintTextAppearance="@style/ShahryLabelSmall"
-        app:hintTextColor="@color/platinum_600"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

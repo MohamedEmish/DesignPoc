@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.designpoc.R
+import com.example.designpoc.databinding.FragmentEditTextBinding
 import com.example.designpoc.databinding.FragmentOtpBinding
 import com.example.designpoc.utils.extensions.hideKeyboard
 import com.example.designpoc.utils.shahryView.ShahryInputField.State
@@ -17,15 +18,15 @@ import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.TRANSITION
 import com.example.designpoc.utils.shahryView.appBar.configureAppBar
 import com.google.android.material.internal.ViewUtils.hideKeyboard
 
-class OtpFragment : Fragment() {
-    private var _binding: FragmentOtpBinding? = null
+class EditTextFragment : Fragment() {
+    private var _binding: FragmentEditTextBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentOtpBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentEditTextBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -45,22 +46,16 @@ class OtpFragment : Fragment() {
             }
 
             btnSetError.setOnClickActionListener {
-                shahryPinView.render(Error(getString(R.string.otp_error)))
                 shahryEditText.render(State.ErrorState(getString(R.string.otp_error)))
             }
             btnClearError.setOnClickActionListener {
-                shahryPinView.render(Initial())
                 shahryEditText.render(State.Initial(true))
             }
-
-            btnClearFields.setOnClickActionListener {
-                shahryPinView.render(Initial(true))
-                shahryEditText.render(State.Initial(true, getString(R.string.help_text_here)))
+            btnDisable.setOnClickActionListener {
+                shahryEditText.render(State.Initial(false))
             }
-
-            shahryPinView.setOnValueEnteredAction { value ->
-                Toast.makeText(requireContext(), value, Toast.LENGTH_SHORT).show()
-                requireContext().hideKeyboard(shahryPinView)
+            btnEnabled.setOnClickActionListener {
+                shahryEditText.render(State.Initial(true))
             }
         }
     }
