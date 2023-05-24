@@ -361,6 +361,12 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
             mDelPressed = true
             //For the last cell of the non password text fields. Clear the text without changing the focus.
             if (editTextList[currentTag].text.isNotEmpty()) editTextList[currentTag].setText("")
+        } else if (charSequence.length > 1) {
+            val currentTag = indexOfCurrentFocus
+            //For the last cell of the non password text fields. Clear the text without changing the focus.
+            if (editTextList[currentTag].text.isNotEmpty())
+                editTextList[currentTag].setText(charSequence.last().toString())
+            if (value.length == mPinLength) editTextList[currentTag].clearFocus()
         }
         for (index in 0 until mPinLength) {
             if (editTextList[index].text.isEmpty()) break
@@ -376,7 +382,7 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
         val currentTag = 0.coerceAtLeast(indexOfCurrentFocus)
         for (index in editTextList.indices) {
             val editText = editTextList[index]
-            editText.isEnabled = editText.text.isNotEmpty() ||  index <= currentTag
+            editText.isEnabled = editText.text.isNotEmpty() || index <= currentTag
         }
     }
 
