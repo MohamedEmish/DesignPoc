@@ -1,6 +1,8 @@
 package com.example.designpoc.ui
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,6 +60,9 @@ class OtpFragment : Fragment() {
                 Toast.makeText(requireContext(), value, Toast.LENGTH_SHORT).show()
                 requireContext().hideKeyboard(shahryPinView)
             }
+            Handler(Looper.getMainLooper()).postDelayed({
+                shahryPinView.render(ShahryPinView.State.Filled("123456"))
+            }, 4000)
         }
     }
 

@@ -65,7 +65,7 @@ class ShahryPinView(
         when (state) {
             is State.Initial -> binding.renderInitial(state.clearFields)
             is Error -> binding.renderError(state.message)
-            is Filled -> binding.renderFilled()
+            is Filled -> binding.renderFilled(state.value)
         }
     }
 
@@ -118,12 +118,15 @@ class ShahryPinView(
         }
     }
 
-    private fun ShahryPinViewWidgetBinding.renderFilled() {
+    private fun ShahryPinViewWidgetBinding.renderFilled(value: String = "") {
         pinView.apply {
             setPinBackgroundRes(R.drawable.pin_background)
             setTextColor(
                 context.getColorResource(R.color.black)
             )
+            if (value.isNotEmpty()) {
+                pinView.value = value
+            }
             clearFocus()
             setIsFocusable(false)
         }
@@ -152,6 +155,6 @@ class ShahryPinView(
     sealed class State : Widget.State {
         data class Initial(val clearFields: Boolean = false) : State()
         data class Error(val message: String) : State()
-        object Filled : State()
+        data class Filled(val value: String) : State()
     }
 }
