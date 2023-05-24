@@ -35,15 +35,6 @@
                 app:pinViewHint="@string/help_text_here"
                 />
 
-            <com.example.designpoc.utils.shahryView.ShahryInputField
-                android:id="@+id/shahryEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing_large_24"
-                android:layout_marginVertical="@dimen/spacing_large_24"
-                app:editTextHint="@string/help_text_here"
-                />
-
             <com.example.designpoc.utils.shahryView.ShahryButton
                 android:id="@+id/btnClearFields"
                 android:layout_width="match_parent"

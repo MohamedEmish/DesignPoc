@@ -48,16 +48,13 @@ class OtpFragment : Fragment() {
 
             btnSetError.setOnClickActionListener {
                 shahryPinView.render(Error(getString(R.string.otp_error)))
-                shahryEditText.render(State.ErrorState(getString(R.string.otp_error)))
             }
             btnClearError.setOnClickActionListener {
                 shahryPinView.render(Initial())
-                shahryEditText.render(State.Initial(true))
             }
 
             btnClearFields.setOnClickActionListener {
                 shahryPinView.render(Initial(true))
-                shahryEditText.render(State.Initial(true, getString(R.string.help_text_here)))
             }
 
             shahryPinView.setOnValueEnteredAction { value ->
