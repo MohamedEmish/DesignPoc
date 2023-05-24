@@ -31,7 +31,6 @@ class ShahryPinView(
             pinView?.value?.let {
                 onValueEntered.invoke(it)
                 binding.renderFilled()
-                binding.pinView.clearFocus()
             }
         }
 
@@ -66,7 +65,7 @@ class ShahryPinView(
         when (state) {
             is State.Initial -> binding.renderInitial(state.clearFields)
             is Error -> binding.renderError(state.message)
-            is Filled -> binding.renderFilled()
+            is Filled -> binding.renderFilled(state.value)
         }
     }
 
@@ -79,6 +78,7 @@ class ShahryPinView(
             setTextColor(
                 context.getColorResource(R.color.black)
             )
+            setIsFocusable(true)
         }
 
         tvHint.apply {
@@ -104,6 +104,7 @@ class ShahryPinView(
             setTextColor(
                 context.getColorResource(R.color.error_600)
             )
+            setIsFocusable(true)
         }
 
         tvHint.apply {
@@ -117,22 +118,33 @@ class ShahryPinView(
         }
     }
 
-    private fun ShahryPinViewWidgetBinding.renderFilled() {
+    private fun ShahryPinViewWidgetBinding.renderFilled(value: String = "") {
         pinView.apply {
             setPinBackgroundRes(R.drawable.pin_background)
             setTextColor(
                 context.getColorResource(R.color.black)
             )
+            if (value.isNotEmpty()) {
+                pinView.value = value
+            }
+            clearFocus()
+            setIsFocusable(false)
         }
 
         tvHint.apply {
-            text = ""
+            text = when (pinViewHint) {
+                0 -> ""
+                else -> context.getString(pinViewHint)
+            }
             setTextColor(
                 ColorStateList.valueOf(
                     context.getColorResource(R.color.platinum_600)
                 )
             )
-            visibility = INVISIBLE
+            visibility = when (pinViewHint) {
+                0 -> INVISIBLE
+                else -> VISIBLE
+            }
         }
     }
 
@@ -143,6 +155,6 @@ class ShahryPinView(
     sealed class State : Widget.State {
         data class Initial(val clearFields: Boolean = false) : State()
         data class Error(val message: String) : State()
-        object Filled : State()
+        data class Filled(val value: String) : State()
     }
 }
