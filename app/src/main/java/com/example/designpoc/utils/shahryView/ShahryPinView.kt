@@ -31,7 +31,6 @@ class ShahryPinView(
             pinView?.value?.let {
                 onValueEntered.invoke(it)
                 binding.renderFilled()
-                binding.pinView.clearFocus()
             }
         }
 
@@ -79,6 +78,7 @@ class ShahryPinView(
             setTextColor(
                 context.getColorResource(R.color.black)
             )
+            setIsFocusable(true)
         }
 
         tvHint.apply {
@@ -104,6 +104,7 @@ class ShahryPinView(
             setTextColor(
                 context.getColorResource(R.color.error_600)
             )
+            setIsFocusable(true)
         }
 
         tvHint.apply {
@@ -123,6 +124,8 @@ class ShahryPinView(
             setTextColor(
                 context.getColorResource(R.color.black)
             )
+            clearFocus()
+            setIsFocusable(false)
         }
 
         tvHint.apply {

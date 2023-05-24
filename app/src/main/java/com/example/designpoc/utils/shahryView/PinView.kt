@@ -16,7 +16,6 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
-import android.view.inputmethod.InputMethodSubtype
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
@@ -24,7 +23,6 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.setMargins
 import com.example.designpoc.R
-import com.example.designpoc.utils.shahryView.PinView.InputType.NUMBER
 import java.util.*
 
 /**
@@ -366,11 +364,10 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
             //For the last cell of the non password text fields. Clear the text without changing the focus.
             if (editTextList[currentTag].text.isNotEmpty())
                 editTextList[currentTag].setText(charSequence.last().toString())
-            if (value.length == mPinLength) editTextList[currentTag].clearFocus()
         }
         for (index in 0 until mPinLength) {
             if (editTextList[index].text.isEmpty()) break
-            if (!fromSetValue && index + 1 == mPinLength) mListener?.onDataEntered(this, true)
+            if (!fromSetValue && index + 1 == mPinLength && indexOfCurrentFocus == mPinLength - 1) mListener?.onDataEntered(this, true)
         }
         updateEnabledState()
     }
@@ -496,6 +493,16 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
         }
         for (edt in editTextList) {
             edt.setTextColor(color)
+        }
+    }
+
+    fun setIsFocusable(focusable: Boolean) {
+        editTextList.forEach {
+            it.isFocusable = focusable
+            if (focusable) {
+                it.isEnabled = true
+                it.isFocusableInTouchMode = true
+            }
         }
     }
 
