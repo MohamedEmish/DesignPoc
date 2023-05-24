@@ -60,9 +60,6 @@ class OtpFragment : Fragment() {
                 Toast.makeText(requireContext(), value, Toast.LENGTH_SHORT).show()
                 requireContext().hideKeyboard(shahryPinView)
             }
-            Handler(Looper.getMainLooper()).postDelayed({
-                shahryPinView.render(ShahryPinView.State.Filled("123456"))
-            }, 4000)
         }
     }
 
