@@ -376,7 +376,7 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
         val currentTag = 0.coerceAtLeast(indexOfCurrentFocus)
         for (index in editTextList.indices) {
             val editText = editTextList[index]
-            editText.isEnabled = index <= currentTag
+            editText.isEnabled = editText.text.isNotEmpty() ||  index <= currentTag
         }
     }
 
