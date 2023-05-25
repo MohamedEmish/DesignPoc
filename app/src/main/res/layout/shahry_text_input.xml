@@ -11,9 +11,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="56dp"
-        android:paddingTop="8dp"
+        android:layout_height="@dimen/spacing_special_56"
+        android:minHeight="@dimen/spacing_special_56"
         app:boxBackgroundMode="none"
         app:boxCornerRadiusBottomEnd="@dimen/spacing_special_12"
         app:boxCornerRadiusBottomStart="@dimen/spacing_special_12"
@@ -29,13 +28,27 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@null"
-            android:minHeight="40dp"
-            android:paddingTop="@dimen/spacing_special_12"
+            android:includeFontPadding="true"
+            android:lines="1"
+            android:maxLines="1"
             android:textAppearance="@style/ShahryBodyLarge"
             />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/btnIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/inputLayout"
+        app:layout_constraintEnd_toEndOf="@id/inputLayout"
+        app:layout_constraintTop_toTopOf="@id/inputLayout"
+        android:layout_margin="@dimen/spacing_normal_16"
+        tools:background="@drawable/ic_calendar"
+        tools:visibility="visible"
+        />
 
     <TextView
         android:id="@+id/tv_error_helper"

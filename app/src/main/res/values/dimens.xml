@@ -35,4 +35,6 @@
     <dimen name="spacing_special_12">12dp</dimen>
     <dimen name="spacing_special_6">6dp</dimen>
     <dimen name="spacing_special_2">2dp</dimen>
+    <dimen name="spacing_special_minus_16">-16dp</dimen>
+    <dimen name="spacing_special_minus_8">-8dp</dimen>
 </resources>

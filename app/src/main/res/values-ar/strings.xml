@@ -35,4 +35,5 @@
     <string name="enabled_button">تفعيل الزر</string>
     <string name="disabled_button">عدم تفعيل الزر</string>
     <string name="edit_text">تحرير النص</string>
+    <string name="clear_focus">إلغاء التركيز</string>
 </resources>

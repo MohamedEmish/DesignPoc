@@ -44,18 +44,22 @@ class EditTextFragment : Fragment() {
                     },
                 )
             }
+            shahryEditText.render(State.Initial(true,getString(R.string.help_text_here)))
 
             btnSetError.setOnClickActionListener {
                 shahryEditText.render(State.ErrorState(getString(R.string.otp_error)))
             }
             btnClearError.setOnClickActionListener {
-                shahryEditText.render(State.Initial(true))
+                shahryEditText.render(State.Initial(true,getString(R.string.help_text_here)))
             }
             btnDisable.setOnClickActionListener {
-                shahryEditText.render(State.Initial(false))
+                shahryEditText.render(State.Initial(false,getString(R.string.help_text_here)))
             }
             btnEnabled.setOnClickActionListener {
-                shahryEditText.render(State.Initial(true))
+                shahryEditText.render(State.Initial(true,getString(R.string.help_text_here)))
+            }
+            btnClearFocus.setOnClickActionListener {
+                shahryEditText.clearFieldFocus()
             }
         }
     }

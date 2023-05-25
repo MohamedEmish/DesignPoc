@@ -35,7 +35,7 @@ class ShahryInputField @JvmOverloads constructor(
     private var iconDisabledColor = context.getColorResource(R.color.platinum_400)
     private var textColorRes = context.getColorResource(R.color.black)
     private var iconEndResource = 0
-    private var iconColor = context.getColorResource(R.color.black)
+    private var iconColor = 0
     private var helperTextEnabled = false
     private var hintTextColorRes = 0
     private var hintText = 0
@@ -57,6 +57,7 @@ class ShahryInputField @JvmOverloads constructor(
         }
 
         override fun onDataEntered(view: View, hasFocus: Boolean) {
+            setEditTextPadding(hasFocus)
             if (hasFocus) {
                 showSoftKeyboard()
             } else {
@@ -66,11 +67,39 @@ class ShahryInputField @JvmOverloads constructor(
         }
     }
 
+    private fun setEditTextPadding(hasFocus: Boolean = false) {
+        if (hasFocus || (binding.editText.text?.isNotBlank() == true && binding.editText.text?.isNotEmpty() == true)) {
+            binding.inputLayout.setPadding(
+                0,
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_small_8),
+                0,
+                0
+            )
+            binding.editText.setPadding(
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_normal_16),
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_minus_16),
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_42),
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_minus_16)
+            )
+        } else {
+            binding.inputLayout.setPadding(
+                0,
+                0,
+                0,
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_x_small_4)
+            )
+            binding.editText.setPadding(
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_normal_16),
+                0,
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_42),
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_x_small_4),
+            )
+        }
+    }
 
     enum class InputType {
         TEXT,
         EMAIL,
-
         NUMBER,
         NUMBER_DECIMAL,
         PHONE,
@@ -102,7 +131,7 @@ class ShahryInputField @JvmOverloads constructor(
                     context.getColorResource(R.color.black)
                 )
             iconColor =
-                attributes.getColor(R.styleable.ShahryInputField_iconColor, context.getColorResource(R.color.black))
+                attributes.getColor(R.styleable.ShahryInputField_iconColor, 0)
             helperTextEnabled = attributes.getBoolean(R.styleable.ShahryInputField_helperTextEnabled, false)
 
             hintTextColorRes = attributes.getColor(
@@ -140,6 +169,7 @@ class ShahryInputField @JvmOverloads constructor(
     }
 
     private fun ShahryTextInputBinding.renderInitial(enabled: Boolean = true, helperText: String = "") {
+        setEditTextPadding()
         inputLayout.apply {
             background = context.getDrawableResource(backgroundRes)
 
@@ -158,25 +188,27 @@ class ShahryInputField @JvmOverloads constructor(
                     textDisabledColor
                 }
             )
+        }
 
-            endIconMode = if (iconEndResource != 0) {
-                TextInputLayout.END_ICON_CUSTOM
-            } else {
-                TextInputLayout.END_ICON_NONE
-            }
-
-            endIconDrawable = if (iconEndResource != 0) {
+        btnIcon.apply {
+            isVisible = iconEndResource != 0
+            background = if (iconEndResource != 0) {
                 context.getDrawableResource(iconEndResource)
             } else {
                 null
             }
 
-            setEndIconTintList(
+            backgroundTintList =
                 ColorStateList.valueOf(
-                    if (enabled) iconColor
-                    else iconDisabledColor
+                    if (enabled) {
+                        when (iconColor) {
+                            0 -> context.getColorResource(R.color.black)
+                            else -> iconColor
+                        }
+                    } else {
+                        iconDisabledColor
+                    }
                 )
-            )
         }
 
         editText.apply {
@@ -207,18 +239,19 @@ class ShahryInputField @JvmOverloads constructor(
                 0 -> null
                 else -> ColorStateList.valueOf(context.getColorResource(R.color.error_600))
             }
+        }
 
-            endIconMode = if (iconEndResource != 0) {
-                TextInputLayout.END_ICON_CUSTOM
-            } else {
-                TextInputLayout.END_ICON_NONE
-            }
+        btnIcon.apply {
+            isVisible = iconEndResource != 0
+            isClickable = false
 
-            endIconDrawable = if (iconEndResource != 0) {
-                context.getDrawableResource(iconEndResource)
+            background = if (iconEndResource != 0) {
+                context.getDrawableResource(R.drawable.ic_warning)
             } else {
                 null
             }
+
+            backgroundTintList = null
         }
 
         editText.apply {
@@ -232,6 +265,12 @@ class ShahryInputField @JvmOverloads constructor(
         tvErrorHelper.isVisible = message.isNotEmpty() == true
         tvErrorHelper.text = message
         tvErrorHelper.setTextColor(ColorStateList.valueOf(context.getColorResource(R.color.error_600)))
+    }
+
+    fun clearFieldFocus() {
+        binding.editText.apply {
+            mListener?.onDataEntered(this, false)
+        }
     }
 
     sealed class State : Widget.State {
