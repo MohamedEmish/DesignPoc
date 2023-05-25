@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.designpoc.R
@@ -48,6 +50,7 @@ class EditTextFragment : Fragment() {
 
             btnSetError.setOnClickActionListener {
                 shahryEditText.render(State.ErrorState(getString(R.string.otp_error)))
+                shahryEditText.vibrate()
             }
             btnClearError.setOnClickActionListener {
                 shahryEditText.setHelperText(getString(R.string.help_text_here))
@@ -65,6 +68,12 @@ class EditTextFragment : Fragment() {
                 shahryEditText.clearFieldFocus()
             }
         }
+    }
+
+    fun View.vibrate(){
+        val shake: Animation =
+            AnimationUtils.loadAnimation(this.context, R.anim.shake)
+        this.startAnimation(shake)
     }
 
     override fun onDestroy() {
