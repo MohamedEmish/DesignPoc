@@ -19,7 +19,6 @@ import com.example.designpoc.utils.shahryView.ShahryInputField.State
 import com.example.designpoc.utils.shahryView.ShahryInputField.State.ErrorState
 import com.example.designpoc.utils.shahryView.ShahryInputField.State.Initial
 import com.example.designpoc.utils.widget.Widget
-import com.google.android.material.textfield.TextInputLayout
 
 class ShahryInputField @JvmOverloads constructor(
     context: Context,
@@ -69,26 +68,26 @@ class ShahryInputField @JvmOverloads constructor(
 
     private fun setEditTextPadding(hasFocus: Boolean = false) {
         if (hasFocus || (binding.editText.text?.isNotBlank() == true && binding.editText.text?.isNotEmpty() == true)) {
-            binding.inputLayout.setPadding(
+            binding.inputLayout.setPaddingRelative(
                 0,
-                context.resources.getDimensionPixelOffset(R.dimen.spacing_small_8),
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_10), // 11
                 0,
                 0
             )
-            binding.editText.setPadding(
+            binding.editText.setPaddingRelative(
                 context.resources.getDimensionPixelOffset(R.dimen.spacing_normal_16),
-                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_minus_16),
-                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_42),
-                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_minus_16)
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_minus_24),
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_48),
+                context.resources.getDimensionPixelOffset(R.dimen.spacing_special_minus_15) //14
             )
         } else {
-            binding.inputLayout.setPadding(
+            binding.inputLayout.setPaddingRelative(
                 0,
                 0,
                 0,
                 context.resources.getDimensionPixelOffset(R.dimen.spacing_x_small_4)
             )
-            binding.editText.setPadding(
+            binding.editText.setPaddingRelative(
                 context.resources.getDimensionPixelOffset(R.dimen.spacing_normal_16),
                 0,
                 context.resources.getDimensionPixelOffset(R.dimen.spacing_special_42),
