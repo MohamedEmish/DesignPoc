@@ -42,6 +42,7 @@ class ShahryInputField @JvmOverloads constructor(
     private var isFieldError: Boolean? = false
     private var backgroundRes = R.drawable.ic_background_edit_text
     private var inputType = InputType.TEXT
+    private var helperText: String = ""
 
     private var onTextChanged: (value: String) -> Unit = {}
 
@@ -50,7 +51,7 @@ class ShahryInputField @JvmOverloads constructor(
             charSequence: CharSequence?,
         ) {
             if (charSequence.toString().isNotEmpty() && isFieldError == true) {
-                binding.renderInitial()
+                binding.renderInitial(helperText = helperText)
             }
             onTextChanged.invoke(charSequence.toString())
         }
@@ -63,6 +64,14 @@ class ShahryInputField @JvmOverloads constructor(
                 view.clearFocus()
                 context.hideKeyboard(view)
             }
+        }
+    }
+
+    fun setHelperText(helperText: String) {
+        this.helperText = helperText
+        binding.apply {
+            tvErrorHelper.isVisible = helperText.isNotEmpty() == true
+            tvErrorHelper.text = helperText
         }
     }
 
@@ -182,7 +191,7 @@ class ShahryInputField @JvmOverloads constructor(
             }
             hintTextColor = ColorStateList.valueOf(
                 if (enabled) {
-                    hintTextColorRes
+                    context.getColorResource(R.color.platinum_600)
                 } else {
                     textDisabledColor
                 }
@@ -224,8 +233,6 @@ class ShahryInputField @JvmOverloads constructor(
             setOnFocusChangeListener { view, hasFocus -> mListener?.onDataEntered(view, hasFocus) }
         }
 
-        tvErrorHelper.isVisible = helperText.isNotEmpty() == true
-        tvErrorHelper.text = helperText
         tvErrorHelper.setTextColor(ColorStateList.valueOf(context.getColorResource(R.color.platinum_600)))
     }
 

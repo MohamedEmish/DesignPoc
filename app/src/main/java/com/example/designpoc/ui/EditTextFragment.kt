@@ -44,19 +44,23 @@ class EditTextFragment : Fragment() {
                     },
                 )
             }
-            shahryEditText.render(State.Initial(true,getString(R.string.help_text_here)))
+            shahryEditText.setHelperText(getString(R.string.help_text_here))
 
             btnSetError.setOnClickActionListener {
+                shahryEditText.setErrorText(getString(R.string.otp_error))
                 shahryEditText.render(State.ErrorState(getString(R.string.otp_error)))
             }
             btnClearError.setOnClickActionListener {
-                shahryEditText.render(State.Initial(true,getString(R.string.help_text_here)))
+                shahryEditText.setHelperText(getString(R.string.help_text_here))
+                shahryEditText.render(State.Initial(true))
             }
             btnDisable.setOnClickActionListener {
-                shahryEditText.render(State.Initial(false,getString(R.string.help_text_here)))
+                shahryEditText.setHelperText(getString(R.string.help_text_here))
+                shahryEditText.render(State.Initial(false))
             }
             btnEnabled.setOnClickActionListener {
-                shahryEditText.render(State.Initial(true,getString(R.string.help_text_here)))
+                shahryEditText.setHelperText(getString(R.string.help_text_here))
+                shahryEditText.render(State.Initial(true))
             }
             btnClearFocus.setOnClickActionListener {
                 shahryEditText.clearFieldFocus()
