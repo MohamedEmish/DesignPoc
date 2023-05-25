@@ -47,7 +47,6 @@ class EditTextFragment : Fragment() {
             shahryEditText.setHelperText(getString(R.string.help_text_here))
 
             btnSetError.setOnClickActionListener {
-                shahryEditText.setErrorText(getString(R.string.otp_error))
                 shahryEditText.render(State.ErrorState(getString(R.string.otp_error)))
             }
             btnClearError.setOnClickActionListener {
