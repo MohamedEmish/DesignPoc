@@ -499,10 +499,9 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
     fun setIsFocusable(focusable: Boolean) {
         editTextList.forEach {
             it.isFocusable = focusable
-            if (focusable) {
-                it.isEnabled = true
-                it.isFocusableInTouchMode = true
-            }
+            it.isCursorVisible = focusable
+            it.isEnabled = focusable
+            it.isFocusableInTouchMode = focusable
         }
     }
 
