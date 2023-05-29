@@ -363,7 +363,7 @@ internal class PinView @JvmOverloads constructor(context: Context, attrs: Attrib
             val currentTag = indexOfCurrentFocus
             //For the last cell of the non password text fields. Clear the text without changing the focus.
             if (editTextList[currentTag].text.isNotEmpty())
-                editTextList[currentTag].setText(charSequence.last().toString())
+                editTextList[currentTag].setText(if (start == 0) charSequence.first().toString() else charSequence.last().toString())
         }
         for (index in 0 until mPinLength) {
             if (editTextList[index].text.isEmpty()) break
