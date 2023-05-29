@@ -51,7 +51,7 @@ class ShahryInputField @JvmOverloads constructor(
             charSequence: CharSequence?,
         ) {
             if (charSequence.toString().isNotEmpty() && isFieldError == true) {
-                binding.renderInitial(helperText = helperText)
+                binding.renderInitial()
             }
             onTextChanged.invoke(charSequence.toString())
         }
@@ -168,7 +168,7 @@ class ShahryInputField @JvmOverloads constructor(
     override fun render(state: State) {
         when (state) {
             is Initial -> {
-                binding.renderInitial(state.enabled, state.helperText)
+                binding.renderInitial(state.enabled)
             }
             is ErrorState -> {
                 binding.renderError(state.message)
@@ -176,7 +176,7 @@ class ShahryInputField @JvmOverloads constructor(
         }
     }
 
-    private fun ShahryTextInputBinding.renderInitial(enabled: Boolean = true, helperText: String = "") {
+    private fun ShahryTextInputBinding.renderInitial(enabled: Boolean = true) {
         setEditTextPadding()
         inputLayout.apply {
             background = context.getDrawableResource(backgroundRes)

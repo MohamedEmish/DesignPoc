@@ -6,19 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.designpoc.R
 import com.example.designpoc.databinding.FragmentEditTextBinding
-import com.example.designpoc.databinding.FragmentOtpBinding
-import com.example.designpoc.utils.extensions.hideKeyboard
 import com.example.designpoc.utils.shahryView.ShahryInputField.State
-import com.example.designpoc.utils.shahryView.ShahryPinView
-import com.example.designpoc.utils.shahryView.ShahryPinView.State.Error
-import com.example.designpoc.utils.shahryView.ShahryPinView.State.Initial
+import com.example.designpoc.utils.shahryView.ShahryPasswordInputField
 import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.TRANSITION
 import com.example.designpoc.utils.shahryView.appBar.configureAppBar
-import com.google.android.material.internal.ViewUtils.hideKeyboard
 
 class EditTextFragment : Fragment() {
     private var _binding: FragmentEditTextBinding? = null
@@ -47,25 +41,35 @@ class EditTextFragment : Fragment() {
                 )
             }
             shahryEditText.setHelperText(getString(R.string.help_text_here))
+            shahryEditTextPassword.setHelperText(getString(R.string.help_text_here))
 
             btnSetError.setOnClickActionListener {
                 shahryEditText.render(State.ErrorState(getString(R.string.otp_error)))
                 shahryEditText.vibrate()
+                shahryEditTextPassword.render(ShahryPasswordInputField.State.ErrorState(getString(R.string.otp_error)))
+                shahryEditTextPassword.vibrate()
             }
             btnClearError.setOnClickActionListener {
                 shahryEditText.setHelperText(getString(R.string.help_text_here))
+                shahryEditTextPassword.setHelperText(getString(R.string.help_text_here))
                 shahryEditText.render(State.Initial(true))
+                shahryEditTextPassword.render(ShahryPasswordInputField.State.Initial(true))
+
             }
             btnDisable.setOnClickActionListener {
                 shahryEditText.setHelperText(getString(R.string.help_text_here))
                 shahryEditText.render(State.Initial(false))
+                shahryEditTextPassword.render(ShahryPasswordInputField.State.Initial(false))
             }
             btnEnabled.setOnClickActionListener {
+                shahryEditTextPassword.setHelperText(getString(R.string.help_text_here))
                 shahryEditText.setHelperText(getString(R.string.help_text_here))
                 shahryEditText.render(State.Initial(true))
+                shahryEditTextPassword.render(ShahryPasswordInputField.State.Initial(true))
             }
             btnClearFocus.setOnClickActionListener {
                 shahryEditText.clearFieldFocus()
+                shahryEditTextPassword.clearFieldFocus()
             }
         }
     }

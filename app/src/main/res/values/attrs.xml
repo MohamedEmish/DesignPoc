@@ -65,6 +65,20 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="ShahryPasswordInputField">
+        <attr name="passwordDisabledTextColor" format="color" />
+
+        <attr name="passwordIconDisabledColor" format="color" />
+        <attr name="passwordIconColor" format="color" />
+
+        <attr name="passwordIconEnabled" format="boolean" />
+        <attr name="passwordHintTextColor" format="color" />
+        <attr name="passwordTextColor" format="color" />
+        <attr name="passwordHint" format="reference" />
+        <attr name="passwordBackground" format="reference" />
+
+    </declare-styleable>
+
     <declare-styleable name="PinView">
         <attr name="pinBackground" format="reference" />
         <attr name="pinTextColor" format="reference"/>

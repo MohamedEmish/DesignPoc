@@ -38,6 +38,17 @@
                 app:iconEndResource="@drawable/ic_calendar"
                 />
 
+            <com.example.designpoc.utils.shahryView.ShahryPasswordInputField
+                android:id="@+id/shahryEditTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_large_24"
+                android:layout_marginVertical="@dimen/spacing_large_24"
+                app:passwordIconEnabled="true"
+                app:passwordHintTextColor="@color/platinum_600"
+                app:passwordHint="@string/password"
+                />
+
             <com.example.designpoc.utils.shahryView.ShahryButton
                 android:id="@+id/btnSetError"
                 android:layout_width="match_parent"

@@ -37,4 +37,5 @@
     <string name="disabled_button">Disable Button</string>
     <string name="edit_text">Edit Text</string>
     <string name="clear_focus">Clear Focus</string>
+    <string name="password">Password</string>
 </resources>
