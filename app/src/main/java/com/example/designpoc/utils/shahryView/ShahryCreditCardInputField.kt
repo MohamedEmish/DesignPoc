@@ -3,6 +3,9 @@ package com.example.designpoc.utils.shahryView
 import android.content.Context
 import android.content.res.ColorStateList
 import android.text.Editable
+import android.text.InputFilter
+import android.text.InputFilter.LengthFilter
+import android.text.Spanned
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -13,14 +16,14 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import com.example.designpoc.R
-import com.example.designpoc.databinding.ShahryPhoneNumberInputBinding
+import com.example.designpoc.databinding.ShahryCreditCardInputBinding
 import com.example.designpoc.utils.extensions.getColorResource
 import com.example.designpoc.utils.extensions.getDrawableResource
 import com.example.designpoc.utils.extensions.hideKeyboard
 import com.example.designpoc.utils.extensions.showSoftKeyboard
 import com.example.designpoc.utils.vibrate
 
-class ShahryPhoneNumberInputField @JvmOverloads constructor(
+class ShahryCreditCardInputField @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0,
@@ -28,21 +31,19 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
     context, attrs, defStyle
 ), TextWatcher {
 
-    private val binding by lazy { ShahryPhoneNumberInputBinding.inflate(LayoutInflater.from(context), this, true) }
+    private val binding by lazy { ShahryCreditCardInputBinding.inflate(LayoutInflater.from(context), this, true) }
 
     private var textDisabledColor = context.getColorResource(R.color.platinum_400)
     private var iconDisabledColor = 0
     private var textColorRes = 0
-    private var iconEndResource = false
+    private var iconEndEnabled = false
     private var iconColor = 0
     private var helperTextEnabled = false
     private var hintTextColorRes = 0
     private var hintText = 0
-    private var focusedHintText = 0
     private var mListener: TextChangeListener? = null
     private var isFieldError: Boolean? = false
     private var helperText: String = ""
-    private var isEnteredPhoneEmpty: Boolean = false
 
     private val textEntered = MutableLiveData("")
 
@@ -53,7 +54,7 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
         override fun onTextChangeListener(
             charSequence: CharSequence?,
         ) {
-            if (charSequence.toString().isEmpty() && isFieldError == true) {
+            if (charSequence.toString().isNotEmpty() && isFieldError == true) {
                 renderInitial()
                 setHelperText(helperText)
             }
@@ -80,38 +81,34 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
     }
 
     init {
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.ShahryPhoneNumberInputField)
+        val attributes = context.obtainStyledAttributes(attrs, R.styleable.ShahryCreditCardInputField)
         if (attrs != null) {
             textColorRes =
                 attributes.getColor(
-                    R.styleable.ShahryPhoneNumberInputField_phoneTextColor,
+                    R.styleable.ShahryCreditCardInputField_creditCardTextColor,
                     context.getColorResource(R.color.black)
                 )
             iconColor =
                 attributes.getColor(
-                    R.styleable.ShahryPhoneNumberInputField_phoneIconColor,
+                    R.styleable.ShahryCreditCardInputField_creditCardIconColor,
                     context.getColorResource(R.color.black)
                 )
 
             hintTextColorRes = attributes.getColor(
-                R.styleable.ShahryPhoneNumberInputField_phoneHintTextColor,
+                R.styleable.ShahryCreditCardInputField_creditCardHintTextColor,
                 context.getColorResource(R.color.platinum_600)
             )
 
             textDisabledColor = attributes.getColor(
-                R.styleable.ShahryPhoneNumberInputField_phoneDisabledTextColor,
+                R.styleable.ShahryCreditCardInputField_creditCardDisabledTextColor,
                 context.getColorResource(R.color.platinum_400)
             )
             iconDisabledColor = attributes.getColor(
-                R.styleable.ShahryPhoneNumberInputField_phoneIconDisabledColor,
+                R.styleable.ShahryCreditCardInputField_creditCardIconDisabledColor,
                 context.getColorResource(R.color.platinum_400)
             )
-            hintText = attributes.getResourceId(R.styleable.ShahryPhoneNumberInputField_phoneHint, 5)
-            focusedHintText = attributes.getResourceId(
-                R.styleable.ShahryPhoneNumberInputField_phoneFocusedHint,
-                R.string.phone_number_hint
-            )
-            iconEndResource = attributes.getBoolean(R.styleable.ShahryPhoneNumberInputField_phoneIconEnabled, false)
+            hintText = attributes.getResourceId(R.styleable.ShahryCreditCardInputField_creditCardHint, 5)
+            iconEndEnabled = attributes.getBoolean(R.styleable.ShahryCreditCardInputField_creditCardIconEnabled, false)
 
         }
         binding.container.background = context.getDrawableResource(R.drawable.ic_background_normal)
@@ -128,13 +125,16 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
                 editText.clearFocus()
                 editText.isEnabled = false
                 container.isClickable = false
-                tvCountryCode.setTextColor(textDisabledColor)
             } else {
                 editText.isEnabled = true
                 container.isClickable = true
-                tvCountryCode.setTextColor(textColorRes)
             }
             editText.apply {
+                filters = arrayOf(
+                    LengthFilter(19),
+                    CreditCardInputFilter()
+                )
+                hint = context.getString(hintText)
                 setHintTextColor(
                     ColorStateList.valueOf(
                         if (enabled) {
@@ -152,23 +152,17 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
                     }
                 )
 
-                addTextChangedListener(this@ShahryPhoneNumberInputField)
+                addTextChangedListener(this@ShahryCreditCardInputField)
                 setViewEventListener(textChangeListener, false)
                 setOnFocusChangeListener { view, hasFocus ->
                     if (hasFocus) {
                         container.background = context.getDrawableResource(
                             R.drawable.ic_background_normal_focused
                         )
-                        if (text?.isEmpty() == true) {
-                            hint = context.getString(focusedHintText)
-                        }
                     } else {
                         container.background = context.getDrawableResource(
                             R.drawable.ic_background_normal
                         )
-                        if (text?.isEmpty() == true) {
-                            hint = context.getString(hintText)
-                        }
                     }
                     mListener?.onDataEntered(editText, hasFocus)
                 }
@@ -183,10 +177,8 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
                     R.drawable.ic_background_normal
                 )
             }
-            btnEndIcon.isVisible = iconEndResource && !isPhoneNumberMatching(editText.text.toString())
+            btnEndIcon.isVisible = iconEndEnabled && !isPhoneNumberMatching(editText.text.toString())
             btnEndIcon.background = context.getDrawableResource(R.drawable.ic_info)
-            btnClearIcon.isVisible = !enabled && iconEndResource
-            btnSuccessIcon.isVisible = iconEndResource && isPhoneNumberMatching(editText.text.toString())
             btnEndIcon.backgroundTintList = ColorStateList.valueOf(
                 if (!enabled) {
                     iconDisabledColor
@@ -206,6 +198,7 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
             observeTextEntered()
             root.vibrate()
             editText.apply {
+                hint = context.getString(hintText)
                 setHintTextColor(
                     when (hintTextColorRes) {
                         0 -> null
@@ -216,22 +209,16 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
                     ColorStateList.valueOf(context.getColorResource(R.color.error_600))
                 )
 
-                addTextChangedListener(this@ShahryPhoneNumberInputField)
+                addTextChangedListener(this@ShahryCreditCardInputField)
                 setOnFocusChangeListener { view, hasFocus ->
                     if (hasFocus) {
                         container.background = context.getDrawableResource(
                             R.drawable.ic_background_error_focused
                         )
-                        if (text?.isEmpty() == true) {
-                            hint = context.getString(focusedHintText)
-                        }
                     } else {
                         container.background = context.getDrawableResource(
                             R.drawable.ic_background_error_normal
                         )
-                        if (text?.isEmpty() == true) {
-                            hint = context.getString(hintText)
-                        }
                     }
                     mListener?.onDataEntered(editText, hasFocus)
                 }
@@ -248,10 +235,9 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
                 setViewEventListener(textChangeListener, true)
             }
 
-            btnEndIcon.isVisible = iconEndResource
+            btnEndIcon.isVisible = iconEndEnabled
             btnEndIcon.background = context.getDrawableResource(R.drawable.ic_warning)
             btnEndIcon.backgroundTintList = ColorStateList.valueOf(context.getColorResource(R.color.error_600))
-            btnSuccessIcon.isVisible = false
             btnClearIcon.isVisible = false
 
             tvErrorHelper.isVisible = message.isNotEmpty() == true
@@ -318,38 +304,42 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
         if (lifecycle != null) {
             textEntered.observe(lifecycle) { text ->
                 if (text != null) {
-                    if (text.toString().startsWith("0") && !isEnteredPhoneEmpty) {
-                        binding.editText.apply {
-                            setText(text.toString().replace("0", ""))
-                        }
-                        isEnteredPhoneEmpty = true
-                    } else if (text.toString().startsWith("2")
-                               || text.toString().startsWith("3")
-                               || text.toString().startsWith("4")
-                               || text.toString().startsWith("5")
-                               || text.toString().startsWith("6")
-                               || text.toString().startsWith("7")
-                               || text.toString().startsWith("8")
-                               || text.toString().startsWith("9")
+                    if (text.isNotEmpty() && text.toString().startsWith("4")) {
+                        binding.ivCardImage.background = context.getDrawableResource(R.drawable.ic_visa_card)
+                    } else if (text.length >= 2 && text.toString().startsWith("51")
+                               || text.toString().startsWith("52")
+                               || text.toString().startsWith("53")
+                               || text.toString().startsWith("54")
+                               || text.toString().startsWith("55")
                     ) {
-                        if (binding.editText.text.toString().length > 1) {
-                            binding.editText.apply {
-                                setText(
-                                    text
-                                        .toString()
-                                        .replace(text.toString()[1].toString(), "")
-                                )
-                                this.text?.length?.let { setSelection(it) }
-                            }
-                        }
-                        renderError("Invalid phone number")
-                        isEnteredPhoneEmpty = false
+                        binding.ivCardImage.background = context.getDrawableResource(R.drawable.ic_master_card)
+                    } else if (text.length >= 2 && text.toString().startsWith("50")) {
+                        binding.ivCardImage.background = context.getDrawableResource(R.drawable.ic_meeza)
                     } else {
-                        isEnteredPhoneEmpty = false
+                        binding.ivCardImage.background = context.getDrawableResource(R.drawable.ic_card_placeholder)
                     }
                 }
             }
         }
     }
 
+    class CreditCardInputFilter : InputFilter {
+        override fun filter(
+            source: CharSequence,
+            start: Int,
+            end: Int,
+            dest: Spanned,
+            dstart: Int,
+            dend: Int,
+        ): CharSequence? {
+            if ((dest != null) and (dest.toString().trim().length > 19)) {
+                return null
+            }
+            return if (source.length == 1 && (dstart == 4 || dstart == 9 || dstart == 14)) {
+                " ".plus(source.toString())
+            } else {
+                null
+            }
+        }
+    }
 }

@@ -21,34 +21,18 @@
         >
 
         <ImageView
-            android:id="@+id/ivCountryFlag"
+            android:id="@+id/ivCardImage"
             android:layout_width="@dimen/spacing_large_24"
             android:layout_height="@dimen/spacing_large_24"
             android:layout_marginVertical="@dimen/spacing_normal_16"
             android:layout_marginStart="@dimen/spacing_normal_16"
             android:layoutDirection="ltr"
-            android:src="@drawable/eg_flag"
+            tools:src="@drawable/eg_flag"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
 
-        <TextView
-            android:id="@+id/tvCountryCode"
-            style="@style/ShahryBodyLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/spacing_normal_16"
-            android:layout_marginStart="@dimen/spacing_small_8"
-            android:layoutDirection="ltr"
-            android:text="@string/country_code"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textLocale="en"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivCountryFlag"
-            app:layout_constraintTop_toTopOf="parent"
-            />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText"
@@ -60,12 +44,12 @@
             android:background="@null"
             android:backgroundTint="@color/transparent"
             android:drawablePadding="@dimen/spacing_normal_16"
-            android:hint="@string/phone_number"
             android:includeFontPadding="true"
-            android:inputType="phone"
+            android:inputType="number"
+            android:digits="0123456789 "
             android:layoutDirection="ltr"
             android:lines="1"
-            android:maxLength="10"
+            android:maxLength="19"
             android:maxLines="1"
             android:textAlignment="viewStart"
             android:textCursorDrawable="@drawable/ic_cusror"
@@ -73,7 +57,7 @@
             android:textLocale="en"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvCountryCode"
+            app:layout_constraintStart_toEndOf="@id/ivCardImage"
             app:layout_constraintTop_toTopOf="parent"
             />
 
@@ -92,22 +76,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:background="@drawable/ic_calendar"
             tools:visibility="gone"
-            />
-
-        <ImageView
-            android:id="@+id/btnSuccessIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/spacing_normal_16"
-            android:layout_marginEnd="@dimen/spacing_normal_16"
-            android:clickable="false"
-            android:focusable="false"
-            android:layoutDirection="ltr"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible"
             />
 
         <ImageButton

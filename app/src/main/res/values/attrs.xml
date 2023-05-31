@@ -2,34 +2,34 @@
 <resources>
     <declare-styleable name="ShahryButton">
         <attr name="buttonType" format="enum">
-            <enum name="primaryLargeButton" value="0"/>
-            <enum name="primaryMediumButton" value="1"/>
-            <enum name="primarySmallButton" value="2"/>
-            <enum name="primaryXSmallButton" value="3"/>
-            <enum name="secondaryLargeButton" value="4"/>
-            <enum name="secondaryMediumButton" value="5"/>
-            <enum name="secondarySmallButton" value="6"/>
-            <enum name="ghostLargeButton" value="7"/>
-            <enum name="ghostMediumButton" value="8"/>
-            <enum name="ghostSmallButton" value="9"/>
-            <enum name="textLargeButton" value="10"/>
-            <enum name="textMediumButton" value="11"/>
-            <enum name="textSmallButton" value="12"/>
+            <enum name="primaryLargeButton" value="0" />
+            <enum name="primaryMediumButton" value="1" />
+            <enum name="primarySmallButton" value="2" />
+            <enum name="primaryXSmallButton" value="3" />
+            <enum name="secondaryLargeButton" value="4" />
+            <enum name="secondaryMediumButton" value="5" />
+            <enum name="secondarySmallButton" value="6" />
+            <enum name="ghostLargeButton" value="7" />
+            <enum name="ghostMediumButton" value="8" />
+            <enum name="ghostSmallButton" value="9" />
+            <enum name="textLargeButton" value="10" />
+            <enum name="textMediumButton" value="11" />
+            <enum name="textSmallButton" value="12" />
         </attr>
-        <attr name="text" format="reference"/>
-        <attr name="textColor" format="color"/>
-        <attr name="textDisabledColor" format="color"/>
+        <attr name="text" format="reference" />
+        <attr name="textColor" format="color" />
+        <attr name="textDisabledColor" format="color" />
 
-        <attr name="buttonColor" format="color"/>
-        <attr name="buttonDisabledColor" format="color"/>
+        <attr name="buttonColor" format="color" />
+        <attr name="buttonDisabledColor" format="color" />
 
-        <attr name="buttonStrokeColor" format="color"/>
-        <attr name="buttonStrokeDisabledColor" format="color"/>
+        <attr name="buttonStrokeColor" format="color" />
+        <attr name="buttonStrokeDisabledColor" format="color" />
 
-        <attr name="progressColor" format="color"/>
-        <attr name="rippleColor" format="color"/>
+        <attr name="progressColor" format="color" />
+        <attr name="rippleColor" format="color" />
 
-        <attr name="iconResource" format="reference"/>
+        <attr name="iconResource" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="ShahryInputField">
@@ -47,8 +47,8 @@
         <attr name="errorEnabled" format="boolean" />
         <attr name="helperTextEnabled" format="boolean" />
         <attr name="editTextHint" format="reference" />
-        <attr format="boolean" name="passwordToggleEnabled"/>
-        <attr format="reference" name="passwordToggleDrawable"/>
+        <attr name="passwordToggleEnabled" format="boolean" />
+        <attr name="passwordToggleDrawable" format="reference" />
         <attr name="fieldBackground" format="reference" />
 
         <attr name="editTextInputType">
@@ -89,10 +89,19 @@
         <attr name="phoneHint" format="reference" />
         <attr name="phoneFocusedHint" format="reference" />
     </declare-styleable>
+    <declare-styleable name="ShahryCreditCardInputField">
+        <attr name="creditCardDisabledTextColor" format="color" />
+        <attr name="creditCardIconDisabledColor" format="color" />
+        <attr name="creditCardIconColor" format="color" />
+        <attr name="creditCardIconEnabled" format="boolean" />
+        <attr name="creditCardHintTextColor" format="color" />
+        <attr name="creditCardTextColor" format="color" />
+        <attr name="creditCardHint" format="reference" />
+    </declare-styleable>
 
     <declare-styleable name="PinView">
         <attr name="pinBackground" format="reference" />
-        <attr name="pinTextColor" format="reference"/>
+        <attr name="pinTextColor" format="reference" />
         <attr name="pinLength" format="integer" />
         <attr name="pinWidth" format="dimension" />
         <attr name="pinHeight" format="dimension" />
@@ -110,6 +119,6 @@
     </attr>
 
     <declare-styleable name="ShahryPinView">
-        <attr name="pinViewHint" format="reference"/>
+        <attr name="pinViewHint" format="reference" />
     </declare-styleable>
 </resources>

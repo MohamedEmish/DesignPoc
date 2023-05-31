@@ -18,6 +18,7 @@ import com.example.designpoc.utils.extensions.showSoftKeyboard
 import com.example.designpoc.utils.shahryView.ShahryInputField.State
 import com.example.designpoc.utils.shahryView.ShahryInputField.State.ErrorState
 import com.example.designpoc.utils.shahryView.ShahryInputField.State.Initial
+import com.example.designpoc.utils.vibrate
 import com.example.designpoc.utils.widget.Widget
 
 class ShahryInputField @JvmOverloads constructor(
@@ -44,8 +45,6 @@ class ShahryInputField @JvmOverloads constructor(
     private var inputType = InputType.TEXT
     private var helperText: String = ""
 
-    private var onTextChanged: (value: String) -> Unit = {}
-
     private var textChangeListener = object : TextChangeListener {
         override fun onTextChangeListener(
             charSequence: CharSequence?,
@@ -53,7 +52,6 @@ class ShahryInputField @JvmOverloads constructor(
             if (charSequence.toString().isNotEmpty() && isFieldError == true) {
                 binding.renderInitial()
             }
-            onTextChanged.invoke(charSequence.toString())
         }
 
         override fun onDataEntered(view: View, hasFocus: Boolean) {
@@ -238,6 +236,7 @@ class ShahryInputField @JvmOverloads constructor(
 
     private fun ShahryTextInputBinding.renderError(message: String = "") {
         inputLayout.apply {
+            root.vibrate()
             background = context.getDrawableResource(
                 R.drawable.ic_background_edit_text_error
             )
@@ -291,7 +290,7 @@ class ShahryInputField @JvmOverloads constructor(
 
     //this to be used to retrieve entered data from edit text
     fun setOnEditTextClickListener(onTextChanged: (value: String) -> Unit) {
-        this.onTextChanged = onTextChanged
+        onTextChanged.invoke(binding.editText.text.toString())
     }
 
     interface TextChangeListener {

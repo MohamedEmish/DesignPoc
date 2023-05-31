@@ -25,6 +25,7 @@ import com.example.designpoc.utils.extensions.showSoftKeyboard
 import com.example.designpoc.utils.shahryView.ShahryPasswordInputField.State
 import com.example.designpoc.utils.shahryView.ShahryPasswordInputField.State.ErrorState
 import com.example.designpoc.utils.shahryView.ShahryPasswordInputField.State.Initial
+import com.example.designpoc.utils.vibrate
 import com.example.designpoc.utils.widget.Widget
 
 class ShahryPasswordInputField @JvmOverloads constructor(
@@ -50,7 +51,6 @@ class ShahryPasswordInputField @JvmOverloads constructor(
     private var backgroundRes = 0
     private var helperText: String = ""
 
-    private var onTextChanged: (value: String) -> Unit = {}
 
     private var isTransformationChanged: Boolean = false
 
@@ -63,7 +63,6 @@ class ShahryPasswordInputField @JvmOverloads constructor(
                 binding.renderInitial()
                 setHelperText(helperText)
             }
-            onTextChanged.invoke(charSequence.toString())
         }
 
         override fun onDataEntered(view: View, hasFocus: Boolean) {
@@ -135,6 +134,7 @@ class ShahryPasswordInputField @JvmOverloads constructor(
 
     private fun ShahryPasswordInputBinding.renderError(message: String = "") {
         editText.apply {
+            root.vibrate()
             background = context.getDrawableResource(
                 R.drawable.ic_background_edit_text_error
             )
@@ -276,7 +276,7 @@ class ShahryPasswordInputField @JvmOverloads constructor(
 
     //this to be used to retrieve entered data from edit text
     fun setOnEditTextClickListener(onTextChanged: (value: String) -> Unit) {
-        this.onTextChanged = onTextChanged
+        onTextChanged.invoke(binding.editText.text.toString())
     }
 
     private fun setViewEventListener(
