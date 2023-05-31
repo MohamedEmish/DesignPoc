@@ -43,6 +43,7 @@ class EditTextFragment : Fragment() {
             shahryEditTextPassword.setHelperText(getString(R.string.help_text_here))
             shahryPhoneNumber.observeTextEntered(viewLifecycleOwner)
             shahryPhoneNumber.setHelperText(getString(R.string.help_text_here))
+            etBasic.setHelperText("")
             etCreditCard.observeTextEntered(viewLifecycleOwner)
 
             btnSetError.setOnClickActionListener {
@@ -50,6 +51,7 @@ class EditTextFragment : Fragment() {
                 shahryEditTextPassword.render(ShahryPasswordInputField.State.ErrorState(getString(R.string.otp_error)))
                 shahryPhoneNumber.renderError(getString(R.string.otp_error))
                 etCreditCard.renderError(getString(R.string.otp_error))
+                etBasic.renderError(getString(R.string.otp_error))
             }
             btnClearError.setOnClickActionListener {
                 shahryEditText.setHelperText(getString(R.string.help_text_here))
@@ -58,6 +60,7 @@ class EditTextFragment : Fragment() {
                 shahryEditTextPassword.render(ShahryPasswordInputField.State.Initial(true))
                 shahryPhoneNumber.renderInitial(true)
                 etCreditCard.renderInitial(true)
+                etBasic.renderInitial(true)
             }
             btnDisable.setOnClickActionListener {
                 shahryEditText.setHelperText(getString(R.string.help_text_here))
@@ -65,6 +68,7 @@ class EditTextFragment : Fragment() {
                 shahryEditTextPassword.render(ShahryPasswordInputField.State.Initial(false))
                 shahryPhoneNumber.renderInitial(false)
                 etCreditCard.renderInitial(false)
+                etBasic.renderInitial(false)
             }
             btnEnabled.setOnClickActionListener {
                 shahryEditTextPassword.setHelperText(getString(R.string.help_text_here))
@@ -73,12 +77,14 @@ class EditTextFragment : Fragment() {
                 shahryEditTextPassword.render(ShahryPasswordInputField.State.Initial(true))
                 shahryPhoneNumber.renderInitial(true)
                 etCreditCard.renderInitial(true)
+                etBasic.renderInitial(true)
             }
             btnClearFocus.setOnClickActionListener {
                 shahryEditText.clearFieldFocus()
                 shahryEditTextPassword.clearFieldFocus()
                 shahryPhoneNumber.clearFieldFocus()
                 etCreditCard.clearFieldFocus()
+                etBasic.clearFieldFocus()
             }
             btnGetData.setOnClickActionListener {
                 etCreditCard.setOnEditTextClickListener {

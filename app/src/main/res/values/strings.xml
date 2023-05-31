@@ -42,5 +42,6 @@
     <string name="country_code" translatable="false">+20</string>
     <string name="phone_number_hint">109 999 9999</string>
     <string name="card_number">Card Number</string>
-    <string name="get_data">Retreive data</string>
+    <string name="get_data">Retrieve data</string>
+    <string name="nationa_id">National Id</string>
 </resources>

@@ -66,10 +66,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/spacing_large_24"
-                app:creditCardHintTextColor="@color/platinum_600"
-                app:creditCardIconEnabled="true"
                 android:layout_marginVertical="@dimen/spacing_large_24"
                 app:creditCardHint="@string/card_number"
+                app:creditCardHintTextColor="@color/platinum_600"
+                app:creditCardIconEnabled="true"
+                />
+
+            <com.example.designpoc.utils.shahryView.ShahryBasicInputField
+                android:id="@+id/etBasic"
+                android:layout_width="match_parent"
+                app:basicHint="@string/nationa_id"
+                android:layout_height="wrap_content"
+                app:creditCardHintTextColor="@color/platinum_600"
+                android:layout_marginHorizontal="@dimen/spacing_large_24"
+                android:layout_marginVertical="@dimen/spacing_large_24"
                 />
 
             <com.example.designpoc.utils.shahryView.ShahryButton

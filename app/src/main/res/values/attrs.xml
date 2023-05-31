@@ -89,6 +89,7 @@
         <attr name="phoneHint" format="reference" />
         <attr name="phoneFocusedHint" format="reference" />
     </declare-styleable>
+
     <declare-styleable name="ShahryCreditCardInputField">
         <attr name="creditCardDisabledTextColor" format="color" />
         <attr name="creditCardIconDisabledColor" format="color" />
@@ -97,6 +98,15 @@
         <attr name="creditCardHintTextColor" format="color" />
         <attr name="creditCardTextColor" format="color" />
         <attr name="creditCardHint" format="reference" />
+    </declare-styleable>
+<declare-styleable name="ShahryBasicInputField">
+        <attr name="basicDisabledTextColor" format="color" />
+        <attr name="basicIconDisabledColor" format="color" />
+        <attr name="basicIconColor" format="color" />
+        <attr name="basicIconEnabled" format="boolean" />
+        <attr name="basicHintTextColor" format="color" />
+        <attr name="basicTextColor" format="color" />
+        <attr name="basicHint" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="PinView">

@@ -41,4 +41,5 @@
     <string name="phone_number_hint">109 999 9999</string>
     <string name="card_number">رقم الكارت</string>
     <string name="get_data">هات الداتا بعد إذنك</string>
+    <string name="nationa_id">الرقم القومي</string>
 </resources>

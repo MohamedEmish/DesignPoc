@@ -60,7 +60,6 @@
             android:background="@null"
             android:backgroundTint="@color/transparent"
             android:drawablePadding="@dimen/spacing_normal_16"
-            android:hint="@string/phone_number"
             android:includeFontPadding="true"
             android:inputType="phone"
             android:layoutDirection="ltr"
