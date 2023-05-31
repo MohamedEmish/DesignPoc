@@ -43,6 +43,7 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
     private var isFieldError: Boolean? = false
     private var helperText: String = ""
     private var isEnteredPhoneEmpty: Boolean = false
+    private var isFieldEnabled: Boolean = false
 
     private val textEntered = MutableLiveData("")
 
@@ -122,6 +123,7 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
     fun renderInitial(
         enabled: Boolean = true,
     ) {
+        this.isFieldEnabled= enabled
         binding.apply {
             observeTextEntered()
             if (!enabled) {
@@ -185,7 +187,6 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
             }
             btnEndIcon.isVisible = iconEndResource && !isPhoneNumberMatching(editText.text.toString())
             btnEndIcon.background = context.getDrawableResource(R.drawable.ic_info)
-            btnClearIcon.isVisible = !enabled && iconEndResource
             btnSuccessIcon.isVisible = iconEndResource && isPhoneNumberMatching(editText.text.toString())
             btnEndIcon.backgroundTintList = ColorStateList.valueOf(
                 if (!enabled) {
@@ -302,7 +303,7 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
         textEntered.postValue(text.toString())
         if (binding.editText.text.toString().isNotEmpty() && binding.editText.text
                 .toString()
-                .isNotBlank() && isFieldError == false
+                .isNotBlank() && isFieldError == false && isFieldEnabled
         ) {
             binding.btnClearIcon.isVisible = true
             binding.btnEndIcon.isVisible = false
