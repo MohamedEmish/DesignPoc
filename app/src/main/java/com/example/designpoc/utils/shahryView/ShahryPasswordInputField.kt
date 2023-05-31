@@ -172,6 +172,15 @@ class ShahryPasswordInputField @JvmOverloads constructor(
         editText.apply {
             if (!enabled) clearFocus()
             hint = context.getString(hintText)
+            setHintTextColor(
+                ColorStateList.valueOf(
+                    if (enabled) {
+                        context.getColorResource(R.color.platinum_600)
+                    } else {
+                        textDisabledColor
+                    }
+                )
+            )
             background = context.getDrawableResource(
                 R.drawable.ic_background_edit_text
             )
@@ -230,9 +239,9 @@ class ShahryPasswordInputField @JvmOverloads constructor(
                             )
                             editText.transformationMethod = DotsPasswordTransformationMethod()
                             isTransformationChanged = false
-                           if (editText.hasFocus()) {
-                               editText.text?.length?.let { editText.setSelection(it) }
-                           }
+                            if (editText.hasFocus()) {
+                                editText.text?.length?.let { editText.setSelection(it) }
+                            }
                         } else {
                             editText.setCompoundDrawablesWithIntrinsicBounds(
                                 null,
@@ -306,6 +315,7 @@ class ShahryPasswordInputField @JvmOverloads constructor(
 
             override val length: Int
                 get() = source.length
+
             override fun get(index: Int): Char = '•'
 
             override fun subSequence(startIndex: Int, endIndex: Int): CharSequence {

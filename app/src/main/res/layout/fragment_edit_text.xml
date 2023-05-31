@@ -44,9 +44,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/spacing_large_24"
                 android:layout_marginVertical="@dimen/spacing_large_24"
-                app:passwordIconEnabled="true"
-                app:passwordHintTextColor="@color/platinum_600"
                 app:passwordHint="@string/password"
+                app:passwordHintTextColor="@color/platinum_600"
+                app:passwordIconEnabled="true"
+                />
+
+            <com.example.designpoc.utils.shahryView.ShahryPhoneNumberInputField
+                android:id="@+id/shahryPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_large_24"
+                android:layout_marginVertical="@dimen/spacing_large_24"
+                app:phoneFocusedHint="@string/phone_number_hint"
+                app:phoneHint="@string/phone_number"
+                app:phoneHintTextColor="@color/platinum_600"
+                app:phoneIconEnabled="true"
                 />
 
             <com.example.designpoc.utils.shahryView.ShahryButton

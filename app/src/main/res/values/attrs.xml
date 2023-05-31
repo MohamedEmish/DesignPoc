@@ -79,6 +79,17 @@
 
     </declare-styleable>
 
+    <declare-styleable name="ShahryPhoneNumberInputField">
+        <attr name="phoneDisabledTextColor" format="color" />
+        <attr name="phoneIconDisabledColor" format="color" />
+        <attr name="phoneIconColor" format="color" />
+        <attr name="phoneIconEnabled" format="boolean" />
+        <attr name="phoneHintTextColor" format="color" />
+        <attr name="phoneTextColor" format="color" />
+        <attr name="phoneHint" format="reference" />
+        <attr name="phoneFocusedHint" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="PinView">
         <attr name="pinBackground" format="reference" />
         <attr name="pinTextColor" format="reference"/>

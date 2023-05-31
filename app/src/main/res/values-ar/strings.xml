@@ -37,4 +37,7 @@
     <string name="edit_text">تحرير النص</string>
     <string name="clear_focus">إلغاء التركيز</string>
     <string name="password">رقم المرور</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="country_code">+20</string>
+    <string name="phone_number_hint">109 999 9999</string>
 </resources>
