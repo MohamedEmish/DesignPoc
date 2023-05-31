@@ -49,7 +49,7 @@ class ShahryPinView(
         if (attrs != null) {
             pinViewHint = attributes.getResourceId(
                 R.styleable.ShahryPinView_pinViewHint,
-                5
+                0
             )
         }
         binding.pinView.apply {
