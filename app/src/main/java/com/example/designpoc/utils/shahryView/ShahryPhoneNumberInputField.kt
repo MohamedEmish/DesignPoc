@@ -8,7 +8,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
@@ -19,7 +18,6 @@ import com.example.designpoc.utils.extensions.getColorResource
 import com.example.designpoc.utils.extensions.getDrawableResource
 import com.example.designpoc.utils.extensions.hideKeyboard
 import com.example.designpoc.utils.extensions.showSoftKeyboard
-import com.example.designpoc.utils.shahryView.ShahryPhoneNumberInputField.State
 import com.example.designpoc.utils.vibrate
 import com.example.designpoc.utils.widget.Widget
 
@@ -29,7 +27,7 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
     defStyle: Int = 0,
 ) : ConstraintLayout(
     context, attrs, defStyle
-), Widget<State>, TextWatcher {
+), TextWatcher {
 
     private val binding by lazy { ShahryPhoneNumberInputBinding.inflate(LayoutInflater.from(context), this, true) }
 
@@ -58,7 +56,7 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
             charSequence: CharSequence?,
         ) {
             if (charSequence.toString().isEmpty() && isFieldError == true) {
-                binding.renderInitial()
+                renderInitial()
                 setHelperText(helperText)
             }
             onTextChanged.invoke(charSequence.toString())
@@ -120,144 +118,148 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
 
         }
         binding.container.background = context.getDrawableResource(R.drawable.ic_background_normal)
-        binding.renderInitial()
+        renderInitial()
         attributes.recycle()
     }
 
-    private fun ShahryPhoneNumberInputBinding.renderInitial(
+    fun renderInitial(
         enabled: Boolean = true,
     ) {
-        observeTextEntered()
-        if (!enabled) {
-            editText.clearFocus()
-            editText.isEnabled = false
-            container.isClickable = false
-            tvCountryCode.setTextColor(textDisabledColor)
-        } else {
-            editText.isEnabled = true
-            container.isClickable = true
-            tvCountryCode.setTextColor(textColorRes)
-        }
-        editText.apply {
-            setHintTextColor(
-                ColorStateList.valueOf(
+        binding.apply {
+            observeTextEntered()
+            if (!enabled) {
+                editText.clearFocus()
+                editText.isEnabled = false
+                container.isClickable = false
+                tvCountryCode.setTextColor(textDisabledColor)
+            } else {
+                editText.isEnabled = true
+                container.isClickable = true
+                tvCountryCode.setTextColor(textColorRes)
+            }
+            editText.apply {
+                setHintTextColor(
+                    ColorStateList.valueOf(
+                        if (enabled) {
+                            context.getColorResource(R.color.platinum_600)
+                        } else {
+                            textDisabledColor
+                        }
+                    )
+                )
+                setTextColor(
                     if (enabled) {
-                        context.getColorResource(R.color.platinum_600)
+                        textColorRes
                     } else {
                         textDisabledColor
                     }
                 )
-            )
-            setTextColor(
-                if (enabled) {
-                    textColorRes
-                } else {
-                    textDisabledColor
-                }
-            )
 
-            addTextChangedListener(this@ShahryPhoneNumberInputField)
-            setViewEventListener(textChangeListener, false)
-            setOnFocusChangeListener { view, hasFocus ->
-                if (hasFocus) {
-                    container.background = context.getDrawableResource(
-                        R.drawable.ic_background_normal_focused
-                    )
-                    if (text?.isEmpty() == true) {
-                        hint = context.getString(focusedHintText)
+                addTextChangedListener(this@ShahryPhoneNumberInputField)
+                setViewEventListener(textChangeListener, false)
+                setOnFocusChangeListener { view, hasFocus ->
+                    if (hasFocus) {
+                        container.background = context.getDrawableResource(
+                            R.drawable.ic_background_normal_focused
+                        )
+                        if (text?.isEmpty() == true) {
+                            hint = context.getString(focusedHintText)
+                        }
+                    } else {
+                        container.background = context.getDrawableResource(
+                            R.drawable.ic_background_normal
+                        )
+                        if (text?.isEmpty() == true) {
+                            hint = context.getString(hintText)
+                        }
                     }
-                } else {
-                    container.background = context.getDrawableResource(
-                        R.drawable.ic_background_normal
-                    )
-                    if (text?.isEmpty() == true) {
-                        hint = context.getString(hintText)
-                    }
+                    mListener?.onDataEntered(editText, hasFocus)
                 }
-                mListener?.onDataEntered(editText, hasFocus)
             }
-        }
 
-        if (editText.hasFocus()) {
-            container.background = context.getDrawableResource(
-                R.drawable.ic_background_normal_focused
-            )
-        } else {
-            container.background = context.getDrawableResource(
-                R.drawable.ic_background_normal
-            )
-        }
-        btnEndIcon.isVisible = iconEndResource && !isPhoneNumberMatching(editText.text.toString())
-        btnEndIcon.background = context.getDrawableResource(R.drawable.ic_info)
-        btnSuccessIcon.isVisible = iconEndResource && isPhoneNumberMatching(editText.text.toString())
-        btnEndIcon.backgroundTintList = ColorStateList.valueOf(
-            if (!enabled) {
-                iconDisabledColor
+            if (editText.hasFocus()) {
+                container.background = context.getDrawableResource(
+                    R.drawable.ic_background_normal_focused
+                )
             } else {
-                iconColor
+                container.background = context.getDrawableResource(
+                    R.drawable.ic_background_normal
+                )
             }
-        )
-        binding.btnClearIcon.setOnClickListener {
-            binding.editText.setText("")
+            btnEndIcon.isVisible = iconEndResource && !isPhoneNumberMatching(editText.text.toString())
+            btnEndIcon.background = context.getDrawableResource(R.drawable.ic_info)
+            btnSuccessIcon.isVisible = iconEndResource && isPhoneNumberMatching(editText.text.toString())
+            btnEndIcon.backgroundTintList = ColorStateList.valueOf(
+                if (!enabled) {
+                    iconDisabledColor
+                } else {
+                    iconColor
+                }
+            )
+            binding.btnClearIcon.setOnClickListener {
+                binding.editText.setText("")
+            }
+            tvErrorHelper.setTextColor(ColorStateList.valueOf(context.getColorResource(R.color.platinum_600)))
         }
-        tvErrorHelper.setTextColor(ColorStateList.valueOf(context.getColorResource(R.color.platinum_600)))
     }
 
-    private fun ShahryPhoneNumberInputBinding.renderError(message: String = "") {
-        observeTextEntered()
-        root.vibrate()
-        editText.apply {
-            setHintTextColor(
-                when (hintTextColorRes) {
-                    0 -> null
-                    else -> ColorStateList.valueOf(context.getColorResource(R.color.error_600))
-                }
-            )
-            setTextColor(
-                ColorStateList.valueOf(context.getColorResource(R.color.error_600))
-            )
+    fun renderError(message: String = "") {
+        binding.apply {
+            observeTextEntered()
+            root.vibrate()
+            editText.apply {
+                setHintTextColor(
+                    when (hintTextColorRes) {
+                        0 -> null
+                        else -> ColorStateList.valueOf(context.getColorResource(R.color.error_600))
+                    }
+                )
+                setTextColor(
+                    ColorStateList.valueOf(context.getColorResource(R.color.error_600))
+                )
 
-            addTextChangedListener(this@ShahryPhoneNumberInputField)
-            setOnFocusChangeListener { view, hasFocus ->
-                if (hasFocus) {
+                addTextChangedListener(this@ShahryPhoneNumberInputField)
+                setOnFocusChangeListener { view, hasFocus ->
+                    if (hasFocus) {
+                        container.background = context.getDrawableResource(
+                            R.drawable.ic_background_error_focused
+                        )
+                        if (text?.isEmpty() == true) {
+                            hint = context.getString(focusedHintText)
+                        }
+                    } else {
+                        container.background = context.getDrawableResource(
+                            R.drawable.ic_background_error_normal
+                        )
+                        if (text?.isEmpty() == true) {
+                            hint = context.getString(hintText)
+                        }
+                    }
+                    mListener?.onDataEntered(editText, hasFocus)
+                }
+
+                if (message.isNotEmpty() && editText.hasFocus()) {
                     container.background = context.getDrawableResource(
                         R.drawable.ic_background_error_focused
                     )
-                    if (text?.isEmpty() == true) {
-                        hint = context.getString(focusedHintText)
-                    }
                 } else {
                     container.background = context.getDrawableResource(
                         R.drawable.ic_background_error_normal
                     )
-                    if (text?.isEmpty() == true) {
-                        hint = context.getString(hintText)
-                    }
                 }
-                mListener?.onDataEntered(editText, hasFocus)
+                setViewEventListener(textChangeListener, true)
             }
 
-            if (message.isNotEmpty() && editText.hasFocus()) {
-                container.background = context.getDrawableResource(
-                    R.drawable.ic_background_error_focused
-                )
-            } else {
-                container.background = context.getDrawableResource(
-                    R.drawable.ic_background_error_normal
-                )
-            }
-            setViewEventListener(textChangeListener, true)
+            btnEndIcon.isVisible = iconEndResource
+            btnEndIcon.background = context.getDrawableResource(R.drawable.ic_warning)
+            btnEndIcon.backgroundTintList = ColorStateList.valueOf(context.getColorResource(R.color.error_600))
+            btnSuccessIcon.isVisible = false
+            btnClearIcon.isVisible = false
+
+            tvErrorHelper.isVisible = message.isNotEmpty() == true
+            tvErrorHelper.text = message
+            tvErrorHelper.setTextColor(ColorStateList.valueOf(context.getColorResource(R.color.error_600)))
         }
-
-        btnEndIcon.isVisible = iconEndResource
-        btnEndIcon.background = context.getDrawableResource(R.drawable.ic_warning)
-        btnEndIcon.backgroundTintList = ColorStateList.valueOf(context.getColorResource(R.color.error_600))
-        btnSuccessIcon.isVisible = false
-        btnClearIcon.isVisible = false
-
-        tvErrorHelper.isVisible = message.isNotEmpty() == true
-        tvErrorHelper.text = message
-        tvErrorHelper.setTextColor(ColorStateList.valueOf(context.getColorResource(R.color.error_600)))
     }
 
     private fun isPhoneNumberMatching(phoneNumber: String): Boolean {
@@ -344,9 +346,10 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
                                         .toString()
                                         .replace(text.toString()[1].toString(), "")
                                 )
+                                this.text?.length?.let { setSelection(it) }
                             }
                         }
-                        binding.renderError("Invalid phone number")
+                        renderError("Invalid phone number")
                         isEnteredPhoneEmpty = false
                     } else {
                         isEnteredPhoneEmpty = false
@@ -355,20 +358,4 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
         }
     }
 
-    fun TextView.applyWithDisabledTextWatcher(textWatcher: TextWatcher, action: TextView.() -> Unit) {
-        this.addTextChangedListener(textWatcher)
-        action()
-        this.removeTextChangedListener(textWatcher)
-    }
-
-    override fun render(state: State) {
-        when (state) {
-            is State.Initial -> {
-                binding.renderInitial(state.enabled)
-            }
-            is State.ErrorState -> {
-                binding.renderError(state.message)
-            }
-        }
-    }
 }
