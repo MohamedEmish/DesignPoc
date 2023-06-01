@@ -3,6 +3,9 @@ package com.example.designpoc.utils.shahryView
 import android.content.Context
 import android.content.res.ColorStateList
 import android.text.Editable
+import android.text.InputFilter
+import android.text.InputFilter.LengthFilter
+import android.text.Spanned
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -137,6 +140,11 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
                 tvCountryCode.setTextColor(textColorRes)
             }
             editText.apply {
+                hint = context.getString(hintText)
+                filters = arrayOf(
+                    LengthFilter(12),
+                    PhoneNumberInputFilter()
+                )
                 setHintTextColor(
                     ColorStateList.valueOf(
                         if (enabled) {
@@ -273,7 +281,7 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
 
     //this to be used to retrieve entered data from edit text
     fun setOnEditTextClickListener(onTextChanged: (value: String) -> Unit) {
-        onTextChanged.invoke(binding.editText.text.toString())
+        onTextChanged.invoke(binding.editText.text.toString().filter{!it.isWhitespace()})
     }
 
     private fun setViewEventListener(
@@ -349,6 +357,26 @@ class ShahryPhoneNumberInputField @JvmOverloads constructor(
                         isEnteredPhoneEmpty = false
                     }
                 }
+            }
+        }
+    }
+
+    class PhoneNumberInputFilter : InputFilter {
+        override fun filter(
+            source: CharSequence,
+            start: Int,
+            end: Int,
+            dest: Spanned,
+            dstart: Int,
+            dend: Int,
+        ): CharSequence? {
+            if ((dest != null) and (dest.toString().trim().length > 12)) {
+                return null
+            }
+            return if (source.length == 1 && (dstart == 3 || dstart == 7)) {
+                " ".plus(source.toString())
+            } else {
+                null
             }
         }
     }

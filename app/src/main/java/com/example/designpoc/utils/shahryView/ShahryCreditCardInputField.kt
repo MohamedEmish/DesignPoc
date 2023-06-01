@@ -258,7 +258,7 @@ class ShahryCreditCardInputField @JvmOverloads constructor(
 
     //this to be used to retrieve entered data from edit text
     fun setOnEditTextClickListener(onTextChanged: (value: String) -> Unit) {
-        onTextChanged.invoke(binding.editText.text.toString())
+        onTextChanged.invoke(binding.editText.text.toString().filter{!it.isWhitespace()})
     }
 
     private fun setViewEventListener(

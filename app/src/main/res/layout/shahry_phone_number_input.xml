@@ -64,7 +64,7 @@
             android:inputType="phone"
             android:layoutDirection="ltr"
             android:lines="1"
-            android:maxLength="10"
+            android:maxLength="12"
             android:maxLines="1"
             android:textAlignment="viewStart"
             android:textCursorDrawable="@drawable/ic_cusror"

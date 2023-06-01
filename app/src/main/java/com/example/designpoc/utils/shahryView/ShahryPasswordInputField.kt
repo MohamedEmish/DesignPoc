@@ -11,7 +11,6 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -50,7 +49,6 @@ class ShahryPasswordInputField @JvmOverloads constructor(
     private var isFieldError: Boolean? = false
     private var backgroundRes = 0
     private var helperText: String = ""
-
 
     private var isTransformationChanged: Boolean = false
 
@@ -147,7 +145,7 @@ class ShahryPasswordInputField @JvmOverloads constructor(
             setTextColor(
                 ColorStateList.valueOf(context.getColorResource(R.color.error_600))
             )
-            setCompoundDrawablesWithIntrinsicBounds(
+            setCompoundDrawablesRelativeWithIntrinsicBounds(
                 null, null, if (iconEndResource) {
                     context.getDrawableResource(R.drawable.ic_warning)
                 } else {
@@ -161,6 +159,8 @@ class ShahryPasswordInputField @JvmOverloads constructor(
             setOnFocusChangeListener { view, hasFocus -> mListener?.onDataEntered(editText, hasFocus) }
             setViewEventListener(textChangeListener, true)
         }
+        ivPasswordToggle.isVisible = false
+        ivError.isVisible = true
 
         tvErrorHelper.isVisible = message.isNotEmpty() == true
         tvErrorHelper.text = message
@@ -191,13 +191,7 @@ class ShahryPasswordInputField @JvmOverloads constructor(
                     textDisabledColor
                 }
             )
-            setCompoundDrawablesWithIntrinsicBounds(
-                null, null,
-                when (iconEndResource) {
-                    false -> null
-                    else -> context.getDrawableResource(R.drawable.eye_close_line)
-                }, null
-            )
+
             if (Build.VERSION.SDK_INT >= VERSION_CODES.M) {
                 compoundDrawableTintList = ColorStateList.valueOf(
                     if (enabled) {
@@ -216,6 +210,14 @@ class ShahryPasswordInputField @JvmOverloads constructor(
             transformationMethod = DotsPasswordTransformationMethod()
             text?.length?.let { setSelection(it) }
         }
+        ivPasswordToggle.apply {
+            isVisible = iconEndResource
+            background = when (iconEndResource) {
+                false -> null
+                else -> context.getDrawableResource(R.drawable.eye_close_line)
+            }
+        }
+        ivError.isVisible = false
 
         if (iconEndResource) {
             setOnEndIconClickListener()
@@ -226,39 +228,22 @@ class ShahryPasswordInputField @JvmOverloads constructor(
     @SuppressLint("ClickableViewAccessibility")
     private fun setOnEndIconClickListener() {
         binding.apply {
-            editText.setOnTouchListener { view, event ->
-                val DRAWABLE_RIGHT = 2
-                if (event.action == MotionEvent.ACTION_UP) {
-                    if (event.rawX >= (editText.right - editText.compoundDrawables[DRAWABLE_RIGHT].bounds.width())) {
-                        if (isTransformationChanged) {
-                            editText.setCompoundDrawablesWithIntrinsicBounds(
-                                null,
-                                null,
-                                context.getDrawableResource(R.drawable.eye_close_line),
-                                null
-                            )
-                            editText.transformationMethod = DotsPasswordTransformationMethod()
-                            isTransformationChanged = false
-                            if (editText.hasFocus()) {
-                                editText.text?.length?.let { editText.setSelection(it) }
-                            }
-                        } else {
-                            editText.setCompoundDrawablesWithIntrinsicBounds(
-                                null,
-                                null,
-                                context.getDrawableResource(R.drawable.eye_open_line),
-                                null
-                            )
-                            editText.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                            isTransformationChanged = true
-                            if (editText.hasFocus()) {
-                                editText.text?.length?.let { editText.setSelection(it) }
-                            }
-                        }
-                        return@setOnTouchListener true
+            ivPasswordToggle.setOnClickListener {
+                if (isTransformationChanged) {
+                    it.setBackgroundResource(R.drawable.eye_close_line)
+                    editText.transformationMethod = DotsPasswordTransformationMethod()
+                    isTransformationChanged = false
+                    if (editText.hasFocus()) {
+                        editText.text?.length?.let {text -> editText.setSelection(text) }
+                    }
+                } else {
+                    it.setBackgroundResource(R.drawable.eye_open_line)
+                    editText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                    isTransformationChanged = true
+                    if (editText.hasFocus()) {
+                        editText.text?.length?.let {text -> editText.setSelection(text) }
                     }
                 }
-                return@setOnTouchListener false
             }
         }
     }

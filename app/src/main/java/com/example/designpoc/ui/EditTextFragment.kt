@@ -88,7 +88,7 @@ class EditTextFragment : Fragment() {
             }
             btnGetData.setOnClickActionListener {
                 etCreditCard.setOnEditTextClickListener {
-                    Toast.makeText(requireContext(), it.filter { chars -> !chars.isWhitespace() }, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 }
             }
         }

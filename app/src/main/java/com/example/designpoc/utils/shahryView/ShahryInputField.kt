@@ -57,7 +57,7 @@ class ShahryInputField @JvmOverloads constructor(
         override fun onDataEntered(view: View, hasFocus: Boolean) {
             setEditTextPadding(hasFocus)
             if (hasFocus) {
-                showSoftKeyboard()
+                view.showSoftKeyboard()
             } else {
                 view.clearFocus()
                 context.hideKeyboard(view)
@@ -218,6 +218,9 @@ class ShahryInputField @JvmOverloads constructor(
         }
 
         editText.apply {
+            isEnabled = enabled
+            isClickable = enabled
+            isFocusable = enabled
             setTextColor(
                 if (enabled) {
                     textColorRes
