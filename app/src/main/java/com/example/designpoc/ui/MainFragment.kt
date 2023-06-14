@@ -65,6 +65,15 @@ class MainFragment : Fragment() {
                     true
                 )
             }
+
+            btnEditText.setOnClickActionListener {
+                parentFragmentManager.replaceFragment(
+                    requireActivity(),
+                    EditTextFragment(),
+                    R.id.fragmentContainer,
+                    true
+                )
+            }
             btnEnglish.setOnClickListener { }
         }
     }

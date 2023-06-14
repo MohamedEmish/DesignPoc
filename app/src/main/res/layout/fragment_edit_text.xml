@@ -27,27 +27,15 @@
             android:orientation="vertical"
             >
 
-            <com.example.designpoc.utils.shahryView.ShahryPinView
-                android:id="@+id/shahryPinView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_normal_16"
-                app:pinViewHint="@string/help_text_here"
-                />
-
-            <com.example.designpoc.utils.shahryView.ShahryButton
-                android:id="@+id/btnClearFields"
+            <com.example.designpoc.utils.shahryView.ShahryInputField
+                android:id="@+id/shahryEditText"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_special_44"
-                android:layout_marginHorizontal="@dimen/spacing_special_52"
-                android:layout_marginTop="@dimen/spacing_small_8"
-                app:buttonColor="@color/black"
-                app:buttonDisabledColor="@color/platinum_400"
-                app:buttonType="primarySmallButton"
-                app:progressColor="@color/white"
-                app:rippleColor="@color/platinum_900"
-                app:text="@string/clearFields"
-                app:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_large_24"
+                android:layout_marginVertical="@dimen/spacing_large_24"
+                app:editTextHint="@string/help_text_here"
+                app:hintTextColor="@color/platinum_600"
+                app:iconEndResource="@drawable/ic_calendar"
                 />
 
             <com.example.designpoc.utils.shahryView.ShahryButton
@@ -77,6 +65,51 @@
                 app:progressColor="@color/white"
                 app:rippleColor="@color/platinum_900"
                 app:text="@string/clear_error"
+                app:textColor="@color/white"
+                />
+
+            <com.example.designpoc.utils.shahryView.ShahryButton
+                android:id="@+id/btnDisable"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_special_44"
+                android:layout_marginHorizontal="@dimen/spacing_special_52"
+                android:layout_marginTop="@dimen/spacing_small_8"
+                app:buttonColor="@color/black"
+                app:buttonDisabledColor="@color/platinum_400"
+                app:buttonType="primarySmallButton"
+                app:progressColor="@color/white"
+                app:rippleColor="@color/platinum_900"
+                app:text="@string/disabled_button"
+                app:textColor="@color/white"
+                />
+
+            <com.example.designpoc.utils.shahryView.ShahryButton
+                android:id="@+id/btnEnabled"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_special_44"
+                android:layout_marginHorizontal="@dimen/spacing_special_52"
+                android:layout_marginTop="@dimen/spacing_small_8"
+                app:buttonColor="@color/black"
+                app:buttonDisabledColor="@color/platinum_400"
+                app:buttonType="primarySmallButton"
+                app:progressColor="@color/white"
+                app:rippleColor="@color/platinum_900"
+                app:text="@string/enabled_button"
+                app:textColor="@color/white"
+                />
+
+            <com.example.designpoc.utils.shahryView.ShahryButton
+                android:id="@+id/btnClearFocus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_special_52"
+                android:layout_marginTop="@dimen/spacing_small_8"
+                app:buttonColor="@color/black"
+                app:buttonDisabledColor="@color/platinum_400"
+                app:buttonType="primarySmallButton"
+                app:progressColor="@color/white"
+                app:rippleColor="@color/platinum_900"
+                app:text="@string/clear_focus"
                 app:textColor="@color/white"
                 />
 

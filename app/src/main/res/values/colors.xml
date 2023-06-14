@@ -46,4 +46,5 @@
     <color name="candy">#FF85CB</color>
     <color name="blueBerry">#4E38BA</color>
     <color name="sky">#57E7FF</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

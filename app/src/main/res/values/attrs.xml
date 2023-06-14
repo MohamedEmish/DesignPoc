@@ -32,6 +32,39 @@
         <attr name="iconResource" format="reference"/>
     </declare-styleable>
 
+    <declare-styleable name="ShahryInputField">
+        <attr name="disabledTextColor" format="color" />
+
+        <attr name="boxBackgroundColor" format="color" />
+
+        <attr name="iconDisabledColor" format="color" />
+        <attr name="iconColor" format="color" />
+
+        <attr name="iconEndResource" format="reference" />
+        <attr name="isFieldEnabled" format="boolean" />
+        <attr name="hintTextColor" format="color" />
+        <attr name="enteredTextColor" format="color" />
+        <attr name="errorEnabled" format="boolean" />
+        <attr name="helperTextEnabled" format="boolean" />
+        <attr name="editTextHint" format="reference" />
+        <attr format="boolean" name="passwordToggleEnabled"/>
+        <attr format="reference" name="passwordToggleDrawable"/>
+        <attr name="fieldBackground" format="reference" />
+
+        <attr name="editTextInputType">
+            <flag name="text" value="0x00000001" />
+            <flag name="textEmailAddress" value="0x00000021" />
+            <flag name="textPassword" value="0x00000081" />
+            <flag name="numberPassword" value="0x00000012" />
+            <flag name="number" value="0x00000002" />
+            <flag name="numberDecimal" value="0x00002002" />
+            <flag name="phone" value="0x00000003" />
+            <flag name="datetime" value="0x00000004" />
+            <flag name="date" value="0x00000014" />
+            <flag name="time" value="0x00000024" />
+        </attr>
+    </declare-styleable>
+
     <declare-styleable name="PinView">
         <attr name="pinBackground" format="reference" />
         <attr name="pinTextColor" format="reference"/>

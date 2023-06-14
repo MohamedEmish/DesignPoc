@@ -32,4 +32,8 @@
     <string name="clearFields">مسح</string>
     <string name="otp_error">هنا رسالة الخطأ</string>
     <string name="help_text_here">هنا رسالة المساعدة</string>
+    <string name="enabled_button">تفعيل الزر</string>
+    <string name="disabled_button">عدم تفعيل الزر</string>
+    <string name="edit_text">تحرير النص</string>
+    <string name="clear_focus">إلغاء التركيز</string>
 </resources>

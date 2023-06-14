@@ -33,4 +33,8 @@
     <string name="clearFields">Clear Fields</string>
     <string name="otp_error">Error Message Here</string>
     <string name="help_text_here">Help Text Here</string>
+    <string name="enabled_button">Enable Button</string>
+    <string name="disabled_button">Disable Button</string>
+    <string name="edit_text">Edit Text</string>
+    <string name="clear_focus">Clear Focus</string>
 </resources>

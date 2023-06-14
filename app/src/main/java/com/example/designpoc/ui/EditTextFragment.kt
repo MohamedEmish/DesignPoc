@@ -1,14 +1,15 @@
 package com.example.designpoc.ui
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.designpoc.R
+import com.example.designpoc.databinding.FragmentEditTextBinding
 import com.example.designpoc.databinding.FragmentOtpBinding
 import com.example.designpoc.utils.extensions.hideKeyboard
 import com.example.designpoc.utils.shahryView.ShahryInputField.State
@@ -19,15 +20,15 @@ import com.example.designpoc.utils.shahryView.appBar.AppBarAnimation.TRANSITION
 import com.example.designpoc.utils.shahryView.appBar.configureAppBar
 import com.google.android.material.internal.ViewUtils.hideKeyboard
 
-class OtpFragment : Fragment() {
-    private var _binding: FragmentOtpBinding? = null
+class EditTextFragment : Fragment() {
+    private var _binding: FragmentEditTextBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentOtpBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentEditTextBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -45,23 +46,34 @@ class OtpFragment : Fragment() {
                     },
                 )
             }
+            shahryEditText.setHelperText(getString(R.string.help_text_here))
 
             btnSetError.setOnClickActionListener {
-                shahryPinView.render(Error(getString(R.string.otp_error)))
+                shahryEditText.render(State.ErrorState(getString(R.string.otp_error)))
+                shahryEditText.vibrate()
             }
             btnClearError.setOnClickActionListener {
-                shahryPinView.render(Initial())
+                shahryEditText.setHelperText(getString(R.string.help_text_here))
+                shahryEditText.render(State.Initial(true))
             }
-
-            btnClearFields.setOnClickActionListener {
-                shahryPinView.render(Initial(true))
+            btnDisable.setOnClickActionListener {
+                shahryEditText.setHelperText(getString(R.string.help_text_here))
+                shahryEditText.render(State.Initial(false))
             }
-
-            shahryPinView.setOnValueEnteredAction { value ->
-                Toast.makeText(requireContext(), value, Toast.LENGTH_SHORT).show()
-                requireContext().hideKeyboard(shahryPinView)
+            btnEnabled.setOnClickActionListener {
+                shahryEditText.setHelperText(getString(R.string.help_text_here))
+                shahryEditText.render(State.Initial(true))
+            }
+            btnClearFocus.setOnClickActionListener {
+                shahryEditText.clearFieldFocus()
             }
         }
+    }
+
+    fun View.vibrate(){
+        val shake: Animation =
+            AnimationUtils.loadAnimation(this.context, R.anim.shake)
+        this.startAnimation(shake)
     }
 
     override fun onDestroy() {
