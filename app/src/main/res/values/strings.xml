@@ -37,4 +37,11 @@
     <string name="disabled_button">Disable Button</string>
     <string name="edit_text">Edit Text</string>
     <string name="clear_focus">Clear Focus</string>
+    <string name="password">Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="country_code" translatable="false">+20</string>
+    <string name="phone_number_hint">109 999 9999</string>
+    <string name="card_number">Card Number</string>
+    <string name="get_data">Retrieve data</string>
+    <string name="nationa_id">National Id</string>
 </resources>

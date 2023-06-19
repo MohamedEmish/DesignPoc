@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_special_56"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ImageView
+            android:id="@+id/ivCardImage"
+            android:layout_width="@dimen/spacing_large_24"
+            android:layout_height="@dimen/spacing_large_24"
+            android:layout_marginVertical="@dimen/spacing_normal_16"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            tools:src="@drawable/eg_flag"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText"
+            style="@style/ShahryPasswordInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginEnd="@dimen/spacing_special_56"
+            android:background="@null"
+            android:backgroundTint="@color/transparent"
+            android:drawablePadding="@dimen/spacing_normal_16"
+            android:includeFontPadding="true"
+            android:inputType="number"
+            android:digits="0123456789 "
+            android:lines="1"
+            android:maxLength="19"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
+            android:textCursorDrawable="@drawable/ic_cusror"
+            android:textLocale="en"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivCardImage"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/btnEndIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/spacing_normal_16"
+            android:layout_marginEnd="@dimen/spacing_normal_16"
+            android:clickable="false"
+            android:focusable="false"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/ic_calendar"
+            tools:visibility="gone"
+            />
+
+        <ImageButton
+            android:id="@+id/btnClearIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/spacing_normal_16"
+            android:layout_marginEnd="@dimen/spacing_normal_16"
+            android:src="@drawable/icon_close"
+            android:visibility="gone"
+            android:background="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_error_helper"
+        style="@style/ShahryBodySmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_normal_16"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/container"
+        app:layout_constraintStart_toStartOf="@+id/container"
+        app:layout_constraintTop_toBottomOf="@+id/container"
+        tools:text="@tools:sample/lorem/random"
+        tools:visibility="visible"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

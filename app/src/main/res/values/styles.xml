@@ -122,6 +122,13 @@
         <item name="colorAccent">@color/black</item>
     </style>
 
+    <style name="ShahryPasswordInput">
+        <item name="android:textAppearance">@style/ShahryBodyLarge</item>
+        <item name="colorAccent">@color/transparent</item>
+        <item name="hintTextAppearance">@style/ShahryBodyLarge</item>
+        <item name="hintAnimationEnabled">true</item>
+    </style>
+
 
     <style name="Poc.ButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">wrap_content</item>

@@ -36,4 +36,10 @@
     <string name="disabled_button">عدم تفعيل الزر</string>
     <string name="edit_text">تحرير النص</string>
     <string name="clear_focus">إلغاء التركيز</string>
+    <string name="password">رقم المرور</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="phone_number_hint">109 999 9999</string>
+    <string name="card_number">رقم الكارت</string>
+    <string name="get_data">هات الداتا بعد إذنك</string>
+    <string name="nationa_id">الرقم القومي</string>
 </resources>
